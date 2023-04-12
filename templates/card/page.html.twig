@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+<figure class="figure right">
+    <img src="{{ asset('img/umldiagram.jpg') }}" width="400" alt="diagram">
+</figure>
+
+<p>This is a Solitaire card game simulator useable on the command line or in the browser. Solitaire is the most popular card game. While initially it was designed for two players, nowadays, you can enjoy it on your own. Players are required to build cards in descending order from King, Queen, Jack, 10, like that, into four piles. You should arrange those cards in alternating colors, which means if the top card is red, the next should be black. You can read more on the <a href="https://en.wikipedia.org/wiki/Solitaire">basics of the game on Wikipedia</a>.</p>
+
+<p>These are the routes used in developing this exercise and game.</p>
+<ul>
+    <li><a href="{{ path('card_deck') }}">Sorted Cards</a></li>
+    <li><a href="{{ path('card_deck_shuffle') }}">Shuffled Cards</a></li>
+    <li><a href="{{ path('card_deck_draw') }}">Draw a card</li>
+    <li><a href="{{ path('card_deck_draw_number', {num: 5}) }}">Draw some cards</li>
+    <li><a href="{{ path('card_init_get') }}">Card Game Start</li>
+</ul>
+
+{% endblock %}

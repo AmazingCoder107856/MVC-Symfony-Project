@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<div class="cards">
+    <h1>Sorted Cards per color</h1>
+
+    <p>Here are the 52 cards.</p>
+
+
+{% for card in cards %}
+    <img src="{{ asset('img/' ~ card) }} " width="100" alt="cards">
+{% endfor %}
+</div>
+
+{% endblock %}

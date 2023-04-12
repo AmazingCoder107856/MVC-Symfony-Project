@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Draw a Card</h1>
+
+<p>Here is the value of the cards drawn.</p>
+<h3>Cards left: {{ num_cards }} cards</h3>
+<div class="draw">
+    <img src="{{ asset('img/' ~ cardString) }} " width="100" alt="cards">
+</div>
+
+{% endblock %}
