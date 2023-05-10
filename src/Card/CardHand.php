@@ -2,44 +2,21 @@
 
 namespace App\Card;
 
-use App\Card\Card;
+use App\Card\CardAbstract;
 
-class CardHand
+class CardHand extends CardAbstract
 {
-    private $hand = [];
-
-    public function add(Card $card): void
+    public function revealAll(): void
     {
-        $this->hand[] = $card;
-    }
-
-    public function draw(): void
-    {
-        foreach ($this->hand as $card) {
-            $card->draw();
+        foreach ($this->cards as $card) {
+            $card->reveal();
         }
     }
 
-    public function getNumberDices(): int
+    public function hideAll(): void
     {
-        return count($this->hand);
-    }
-
-    public function getValues(): array
-    {
-        $values = [];
-        foreach ($this->hand as $card) {
-            $values[] = $card->getValue();
+        foreach ($this->cards as $card) {
+            $card->hide();
         }
-        return $values;
-    }
-
-    public function getString(): array
-    {
-        $values = [];
-        foreach ($this->hand as $card) {
-            $values[] = $card->getAsString();
-        }
-        return $values;
     }
 }

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyControllerJson
 {
-    #[Route("/api")]
+    #[Route("/api", name: "api")]
     public function jsonPage(): Response
     {
         $routes = array(
@@ -46,7 +46,7 @@ class LuckyControllerJson
         return $response;
     }
 
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: "api_quotes")]
     public function jsonQuote(): Response
     {
         $quotes = array(

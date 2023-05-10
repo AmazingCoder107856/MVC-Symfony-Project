@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game21{% endblock %}
+
+{% block body %}
+
+    <h2>Welcome to Card Game21 minigame!</h2>
+    <p>Dealer will draw if he has less than 17 points. Game ends if both dealer and player choose to stand or one or both participants are at or over 21 points.</p>
+    
+    <form method="post" action="{{ path('game21_start') }}">
+        <input type="submit" name="play" class="btn game-btn" value="Start Game21">
+    </form>
+{% endblock %}

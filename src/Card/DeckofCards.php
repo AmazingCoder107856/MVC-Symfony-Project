@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Card;
+
+use App\Card\Cardscopy;
+use App\Card\CardAbstract;
+
+class DeckofCards extends CardAbstract
+{
+    private int $values = 13;
+
+    /**
+     * @var array<string>
+     */
+    private array $suits = [
+        "hearts",
+        "diamonds",
+        "clubs",
+        "spades"
+    ];
+
+    public function __construct()
+    {
+        foreach ($this->suits as $suit) {
+            for ($value = 1; $value <= $this->values; $value++) {
+                $card = $suit . '-' . sprintf("%02d", $value);
+                $this->cards[] = new Cardscopy($card);
+            }
+        }
+    }
+}

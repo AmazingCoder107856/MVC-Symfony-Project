@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\Deck;
+use App\Card\DeckofCards;
 use App\Card\CardHand;
-
+use Exception;
+use TypeError;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,111 +59,53 @@ class CardGameController extends AbstractController
         return $this->render('card/draw.html.twig', $data);
     }
 
-    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_number")]
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_numbers")]
     public function drawManyCards(int $num): Response
     {
         $cards = [];
+        $totcards = 52;
         for ($i=1; $i <= $num; $i++) {
             $card = new Deck();
             $cards[] = $card->drawOneCard();
         }
 
         $data = [
-            "num_cards" => (count($card->getDeckShuffled()) - $num),
+            "num_cards" => ($totcards - $num),
             "cardString" => $cards
         ];
 
         return $this->render('card/draw_many.html.twig', $data);
     }
 
-    #[Route("/game/card/init", name: "card_init_get", methods: ['GET'])]
-    public function init(): Response
-    {
-        return $this->render('card/init.html.twig');
-    }
-
-
-    #[Route("/game/card/init", name: "card_init_post", methods: ['POST'])]
-    public function initCallback(
-        Request $request,
-        SessionInterface $session
+    #[Route("/card/cardplay/{players<\d+>}/{cards<\d+>}", name: "card_play")]
+    public function cardPlay(
+        SessionInterface $session,
+        int $players,
+        int $cards
     ): Response {
-        $numCard = $request->request->get('num_cards');
+        $deck = $session->get("deck") ?? new DeckofCards();
+        $session->set("deck", $deck);
+        $hands = [];
 
-        $hand = new CardHand();
-        for ($i = 1; $i <= $numCard; $i++) {
-            $hand->add(new Deck());
+        // ge varje spela en hand
+        for ($i = 0; $i < $players; $i++) {
+            $hands[] = new CardHand();
         }
-        $hand->draw();
 
-        $session->set("card_cardhand", $hand);
-        $session->set("card_cards", $numCard);
-        $session->set("card_round", 0);
-        $session->set("card_total", 0);
-
-        return $this->redirectToRoute('card_play');
-    }
-
-    #[Route("/game/card/play", name: "card_play", methods: ['GET'])]
-    public function play(
-        SessionInterface $session
-    ): Response {
-        $cardhand = $session->get("card_cardhand");
-
-        $data = [
-            "cardCards" => $session->get("card_cards"),
-            "cardRound" => $session->get("card_round"),
-            "cardTotal" => $session->get("card_total"),
-            "cardValues" => $cardhand->getString()
-        ];
-
-        return $this->render('card/play.html.twig', $data);
-    }
-
-    #[Route("/game/card/roll", name: "card_roll", methods: ['POST'])]
-    public function roll(
-        SessionInterface $session
-    ): Response {
-        $hand = $session->get("card_cardhand");
-        $hand->roll();
-
-        $roundTotal = $session->get("card_round");
-        $round = 0;
-        $values = $hand->getValues();
-        foreach ($values as $value) {
-            if ($value === 1) {
-                $round = 0;
-                $roundTotal = 0;
-                $this->addFlash(
-                    'warning',
-                    'You got a 1 and you lost the round points!'
-                );
-                break;
+        // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut
+        for ($j = 0; $j < $cards; $j++) {
+            foreach ($hands as $hand) {
+                try {
+                    $hand->add($deck->draw());
+                } catch (TypeError $e) {
+                    break;
+                }
             }
-            $round += $value;
         }
 
-        $session->set("card_round", $roundTotal + $round);
-
-        return $this->redirectToRoute('card_play');
+        return $this->render('card/cardplay.html.twig', [
+            'deck' => $deck,
+            'hands' => $hands,
+        ]);
     }
-
-    #[Route("/game/card/save", name: "card_save", methods: ['POST'])]
-    public function save(
-        SessionInterface $session
-    ): Response {
-        $roundTotal = $session->get("card_round");
-        $gameTotal = $session->get("card_total");
-
-        $session->set("card_round", 0);
-        $session->set("card_total", $roundTotal + $gameTotal);
-
-        $this->addFlash(
-            'notice',
-            'Your round was saved to the total!'
-        );
-
-        return $this->redirectToRoute('card_play');
-    }
-
 }

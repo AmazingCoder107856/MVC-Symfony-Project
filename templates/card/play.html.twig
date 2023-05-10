@@ -9,19 +9,19 @@
 
 <p>You are playing with {{ cardCards }} cards.</p>
 
-<div class="draw">
+<div class="draws">
 {% for value in cardValues %}
-    {{ value }} 
+    <img src="{{ asset('img/' ~ value) }} " width="100px" alt="cards"> 
 {% endfor %}
-</p>
+</div>
 
 <p>Round: {{ cardRound }}</p>
 <p>Total: {{ cardTotal }}</p>
 
 <form method="post" action="">
     <p>
-        <input type="submit" name="roll" value="Draw"
-            onClick="this.form.action='{{ path('card_roll') }}';"
+        <input type="submit" name="draw" value="Draw"
+            onClick="this.form.action='{{ path('card_draw') }}';"
         >
         <input type="submit" name="save" value="Save"
             onClick="this.form.action='{{ path('card_save') }}';"

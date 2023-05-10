@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API{% endblock %}
+
+{% block body %}
+
+    <p>Här kan du hitta appens alla API end points.</p>
+
+    <h3>GET <a href="{{ path('api') }}">/api</a></h3>
+    <p>It's a route that shows the summary of all API in JSON.</p>
+
+    <h3>GET <a href="{{ path('api_quotes') }}">/api/quote</a></h3>
+    <p>It's a route that shows the 'qoutes of the day' in random.</p>
+
+    <h3>GET <a href="{{ path('api_deck') }}">/api/deck</a></h3>
+    <p>It's a route that shows the deck of cards sorted by their colors.</p>
+
+    <h3>GET <a href="{{ path('api_deck_shuffle_get') }}">/api/deck/shuffle</a></h3>
+    <p>It's a route that shows the shuffled cards.</p>
+
+    <h3>POST <a href="{{ path('api_deck_shuffle') }}">/api/deck/shuffle</a></h3>
+    <p>It's a route that shows the shuffled cards.</p>
+
+    <h3>POST <a href="{{ path('api_deck_draw') }}">/api/deck/draw</a></h3>
+    <p>It's a route that shows one drawn card.</p>
+
+    <h3>POST <a href="{{ path('api_deck_drawmany', {"num": 5}) }}">/api/deck/draw/:number</a></h3>
+    <p>It's a route that shows more than one drawn cards.</a></p>
+
+    <h3>POST <a href="{{ path('api_play', {"players": 2, "cards": 5}) }}">/api/play/:players/:cards</a></h3>
+    <p>It's a route that shows number of players, number of cards and draw.</p>
+
+    <h3>GET <a href="{{ path('api_game') }}">/api/game</a></h3>
+    <p>It's a route that shows the start of the Game21.</p>
+{% endblock %}

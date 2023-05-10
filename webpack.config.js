@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const Encore = require('@symfony/webpack-encore');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -8,11 +9,11 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
     // directory where compiled assets will be stored
-    .setOutputPath('public/build/')
+    .setOutputPath('public/builds/')
     // public path used by the web server to access the output path
-    .setPublicPath('build')
+    .setPublicPath('builds')
     // only needed for CDN's or subdirectory deploy
-    //.setManifestKeyPrefix('build/')
+    // .setManifestKeyPrefix('build/')
 
     /*
      * ENTRY CONFIG
@@ -70,6 +71,10 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
+    // eslint-disable-next-line indent
+    // eslint-disable-next-line indent
+    // eslint-disable-next-line indent
+    // eslint-disable-next-line indent
     //.autoProvidejQuery()
 ;
 

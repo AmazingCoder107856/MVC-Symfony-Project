@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Controller } from '@hotwired/stimulus';
 
 /*
@@ -11,6 +12,7 @@ import { Controller } from '@hotwired/stimulus';
  */
 export default class extends Controller {
     connect() {
+        // eslint-disable-next-line max-len, max-len
         this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
     }
 }

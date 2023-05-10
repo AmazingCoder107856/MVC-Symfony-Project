@@ -6,18 +6,15 @@ class Card
 {
     private $faces;
     private $deck;
-    private $leftOverDeck;
 
     public function __construct()
     {
         $this->faces = array(
-            'Ac.png', '2c.png', '3c.png', '4c.png', '5c.png', '6c.png', '7c.png', '8c.png', '9c.png', '10c.png', 'jc.png', 'qc.png', 'kc.png',
-            'Ah.png', '2h.png', '3h.png', '4h.png', '5h.png', '6h.png', '7h.png', '8h.png', '9h.png', '10h.png', 'jh.png', 'qh.png', 'kh.png',
-            'As.png', '2s.png', '3s.png', '4s.png', '5s.png', '6s.png', '7s.png', '8s.png', '9s.png', '10s.png', 'js.png', 'qs.png', 'ks.png',
-            'Ad.png', '2d.png', '3d.png', '4d.png', '5d.png', '6d.png', '7d.png', '8d.png', '9d.png', '10d.png', 'jd.png', 'qd.png', 'kd.png',
+            'clubs-01.png', 'clubs-02.png', 'clubs-03.png', 'clubs-04.png', 'clubs-05.png', 'clubs-06.png', 'clubs-07.png', 'clubs-08.png', 'clubs-09.png', 'clubs-10.png', 'clubs-11.png', 'clubs-12.png', 'clubs-13.png',
+            'hearts-01.png', 'hearts-02.png', 'hearts-03.png', 'hearts-04.png', 'hearts-05.png', 'hearts-06.png', 'hearts-07.png', 'hearts-08.png', 'hearts-09.png', 'hearts-10.png', 'hearts-11.png', 'hearts-12.png', 'hearts-13.png',
+            'spades-01.png', 'spades-02.png', 'spades-03.png', 'spades-04.png', 'spades-05.png', 'spades-06.png', 'spades-07.png', 'spades-08.png', 'spades-09.png', 'spades-10.png', 'spades-11.png', 'spades-12.png', 'spades-13.png',
+            'diamonds-01.png', 'diamonds-02.png', 'diamonds-03.png', 'diamonds-04.png', 'diamonds-05.png', 'diamonds-06.png', 'diamonds-07.png', 'diamonds-08.png', 'diamonds-09.png', 'diamonds-10.png', 'diamonds-11.png', 'diamonds-12.png', 'diamonds-13.png',
         );
-
-        $this->leftOverDeck = [];
     }
 
     /**
@@ -33,20 +30,6 @@ class Card
     }
 
     /**
-     * This function remove array of cards that the player took
-     * @param $leftOverDeck
-     * @param $cardToBeRemoved
-     * @return array
-     */
-    public function updateLeftOverDeck($leftOverDeck, $cardToBeRemoved)
-    {
-
-        $updatedLODeck = array_diff($leftOverDeck, $cardToBeRemoved);
-        $this->leftOverDeck = $updatedLODeck;
-        return $this->leftOverDeck;
-    }
-
-    /**
      * Deck Var Setter
      * @param mixed $deck
      */
@@ -54,37 +37,9 @@ class Card
     {
         $this->deck = $deck;
     }
-
-    /**
-     * leftOverDeck Var Setter
-     * @param array $leftOverDeck
-     */
-    public function setLeftOverDeck($leftOverDeck)
-    {
-        $this->leftOverDeck = $leftOverDeck;
-    }
-
-    /**
-     * leftOverDeck Var Getter
-     * @return array
-     */
-    public function getLeftOverDeck()
-    {
-        return $this->leftOverDeck;
-    }
-
-    /**
-     * Deck Var Getter
-     * @return mixed
-     */
-    public function getDeck()
-    {
-        return $this->deck;
-    }
-
     public function draw(): int
     {
-        $this->deck = random_int(1, 52);
+        $this->deck = random_int(1, 13);
         return $this->deck;
     }
 

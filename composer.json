@@ -21,7 +21,7 @@
         "symfony/doctrine-messenger": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/expression-language": "6.1.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.2",
         "symfony/form": "6.1.*",
         "symfony/framework-bundle": "6.1.*",
         "symfony/http-client": "6.1.*",
@@ -100,7 +100,13 @@
         ],
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
         "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v",
-        "csfix:tests": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix src tests"
+        "csfix:tests": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php fix src tests",
+        "phpmd": "tools/phpmd/vendor/bin/phpmd . text phpmd.xml || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan || true",
+        "lint": [
+            "@phpmd",
+            "@phpstan"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;700&display=swap);
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +10,8 @@ body {
     font-size: 100%;
     line-height: 1.4;
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    width: 100%;
 }
 
 input {
@@ -220,9 +223,240 @@ img {
 }
 
 .cards {
-    height: 1800px;
+    height: 1000px;
 }
 
 .draw {
+    height: 600px;
+}
+
+.draws {
     height: 300px;
+}
+
+.carder {
+    background-color: lightgrey;
+    border: 25px solid #07544a;
+}
+
+.middle {
+    text-align: center;
+}
+
+.image {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    height: 165px;
+}
+
+.btn {
+    border: 2px solid #caa838;
+    margin-right: 20px;
+    padding: 15px 20px;
+    text-transform: Uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    background-color: #07544a;
+    transition: all 300ms ease-in;
+    color: #caa838;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #caa838;
+    color: #07544a;
+}
+
+.game-btn {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+}
+
+@media screen and (max-width: 668px) {
+    .cards {
+        height: 2200px;
+    }
+    
+    .draw {
+        height: 600px;
+    }
+}
+
+.wrapper {
+    width: 420px;
+    background: lightgrey;
+    padding: 5px;
+    border: thin solid black;
+}
+input {
+    border: thick solid black;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background: orange;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+
+.cardstack, .hand {
+    position: relative;
+    height: 9.6em;
+}
+
+#table {
+   background: #008000;
+   max-width: 800px;
+   margin: auto;
+   padding: 20px;
+   border: 3px solid #222;
+   border-radius: 10px;
+}
+
+.alert {
+   max-width: 800px;
+   margin: 0 auto 20px auto;
+}
+
+.cards .box {
+   padding: 20px;
+   border: 1px dashed #eee;
+   color: #fff;
+   font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+   .cards + .cards {
+      margin-top: 15px;
+   }
+}
+
+#score-board {
+   margin-right: 0;
+   margin-left: 0;
+}
+
+#score-board > div {
+   padding-right: 0;
+   padding-left: 0;
+}
+
+#score-board .table {
+   max-width: 800px;
+   margin: auto;
+}
+
+#buttons {
+   max-width: 800px;
+   padding: 15px 0;
+   margin: 20px auto;
+   border: 1px solid #ccc;
+   background: #fefefe;
+}
+
+#buttons > div { 
+   text-align: center;
+}
+
+#buttons a {
+   width: 125px;
+   display: inline-block;
+}
+
+@media screen and (max-width: 767px) {
+   #buttons a {
+      width: 100%;
+   }
+
+   #buttons > div + div {
+      margin-top: 20px;
+   }
+}
+
+.outline {
+    width: 110px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: #FFF;
+}
+
+.top {
+    text-align: left;
+}
+
+.bottom {
+    text-align: left;
+    transform: rotate(180deg);
+}
+
+.shadow {
+    box-shadow: 1px 1px 3px #07544a;
+    -moz-box-shadow: 1px 1px 3px #07544a;
+    -webkit-box-shadow: 1px 1px 3px #07544a;
+}
+
+.rounded {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.dealer-cards {
+    display: flex;
+    justify-content: center;
+}
+
+.your-cards {
+    display: flex;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav {
+        position: relative;
+        z-index: 999;
+    }
+
+    .nav ul {
+        position: absolute;
+        display: unset;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100vh;
+        opacity: 0.8;
+        border-radius: 20px 20px 0 20px;
+        transform: scale(0, 1);
+        transform-origin: right;
+        transition: all 500ms ease-out;
+    }
+
+    .nav li {
+        width: 50%;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .nav li:first-child {
+        margin-top: 200px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .nav ul {
+        width: 100%;
+    }
+}
+
+.start {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

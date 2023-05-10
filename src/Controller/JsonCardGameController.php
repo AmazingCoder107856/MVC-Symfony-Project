@@ -4,6 +4,11 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\Deck;
+use App\Card\DeckofCards;
+use App\Card\CardHand;
+use App\Game21\Game21;
+use Exception;
+use TypeError;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -135,7 +140,7 @@ class JsonCardGameController extends AbstractController
         return $this->redirectToRoute('api_deck_drawmany_get');
     }
 
-    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_number")]
+    #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_draw_number")]
     public function drawManyCards(int $num): Response
     {
         $cards = [];
@@ -150,5 +155,71 @@ class JsonCardGameController extends AbstractController
         ];
 
         return $this->render('card/draw_many.html.twig', $data);
+    }
+
+    #[Route("/api/play/{players<\d+>}/{cards<\d+>}", name: "api_play", methods: ["GET", "POST"])]
+    public function apiDeal(
+        SessionInterface $session,
+        int $players,
+        int $cards
+    ): Response {
+        $deck = $session->get("deck") ?? new DeckofCards();
+        $session->set("deck", $deck);
+        $hands = [];
+
+        for ($i = 1; $i <= $players; $i++) {
+            $hands["player" . $i] = new CardHand();
+        }
+
+        for ($j = 0; $j < $cards; $j++) {
+            foreach ($hands as $hand) {
+                try {
+                    $hand->add($deck->draw());
+                } catch (TypeError $e) {
+                    break;
+                }
+            }
+        }
+
+        $data = [
+            'cardsRemaining' => $deck->getCardsRemaining(),
+            'hands' => array_map(function ($hand) { return $hand->peekAllCards(); }, $hands)
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/game", name: "api_game", methods: ["GET"])]
+    public function apiGame(SessionInterface $session): Response
+    {
+        $game21 = $session->get("game21") ?? new Game21();
+        // $session->set("deck", $game21);
+
+        // $play = $request->request->get('play');
+
+        if ($game21) {
+            $game21->firstPlay();
+            $session->set('game21', $game21);
+        }
+
+        $data = [
+            'dealer' => $game21 ->getDealerCards(),
+            'player' => $game21 ->getPlayerCards(),
+            'dealerscore' => $game21 ->getDealerScore(),
+            'playerscore' => $game21->getPlayerScore(),
+            'firstdraw' => $game21 ->checkFirstDraw()
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
     }
 }
