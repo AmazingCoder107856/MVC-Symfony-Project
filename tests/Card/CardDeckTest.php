@@ -21,6 +21,7 @@ class CardDeckTest extends TestCase
         $deck = new CardDeck();
         $this->assertInstanceOf("\App\Card\CardDeck", $deck);
     }
+
     /**
      * Test if a deck object contains of an array of 52 card objects
      */
@@ -100,7 +101,7 @@ class CardDeckTest extends TestCase
     }
 
     /**
-     * Construct object and verify that a DiceException is thrown.
+     * Construct object and verify that a DrawException is thrown.
      * Use a faulty argument that is too high.
      * testing if an exception is thrown then try to draw more then cards in deck
      */
@@ -115,7 +116,7 @@ class CardDeckTest extends TestCase
     }
 
     /**
-     * Construct object and verify that a DiceException is thrown.
+     * Construct object and verify that a DrawException is thrown.
      * Use a faulty argument that is too low.
      * testing if exception is thrown when try to draw on a empty deck
      */

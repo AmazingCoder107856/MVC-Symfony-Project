@@ -23,13 +23,6 @@ class Game21Stubb
 
     public function firstPlay()
     {
-        // Initiera spelet
-
-        // Spela med player
-
-        // Spela med dealer
-
-        // Bestäm vinnare och returnera en sträng
         return "Empty";
     }
 }

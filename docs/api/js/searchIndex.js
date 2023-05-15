@@ -146,11 +146,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-JsonCardGameController.html#method_apiDeal"
         },                {
-            "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003AapiGame\u0028\u0029",
-            "name": "apiGame",
-            "summary": "",
-            "url": "classes/App-Controller-JsonCardGameController.html#method_apiGame"
-        },                {
             "fqsen": "\\App\\Controller\\LuckyController",
             "name": "LuckyController",
             "summary": "",
@@ -575,6 +570,26 @@ Search.appendIndex(
             "name": "remove",
             "summary": "",
             "url": "classes/App-Repository-LibraryRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonGame21Controller",
+            "name": "JsonGame21Controller",
+            "summary": "",
+            "url": "classes/App-Controller-JsonGame21Controller.html"
+        },                {
+            "fqsen": "\\App\\Controller\\JsonGame21Controller\u003A\u003AapiGame\u0028\u0029",
+            "name": "apiGame",
+            "summary": "",
+            "url": "classes/App-Controller-JsonGame21Controller.html#method_apiGame"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_index"
         },                {
             "fqsen": "\\",
             "name": "\\",
