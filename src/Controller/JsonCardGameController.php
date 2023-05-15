@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Card\CardDeck;
 use App\Card\CardHand;
-use TypeError;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use TypeError;
 
 class JsonCardGameController extends AbstractController
 {
@@ -31,11 +30,16 @@ class JsonCardGameController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_deck_shuffle_get", methods: ['GET'])]
-    public function shuffle(): Response
-    {
+    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ['GET', 'POST'])]
+    public function shuffleCallback(
+        Request $request
+    ): Response {
+        $numCard = $request->request->get('num_cards');
+
         $cards = new CardDeck();
-        $cards->shuffles();
+        for ($i = 1; $i <= $numCard; $i++) {
+            $cards->shuffles();
+        }
 
         $data = [
             "cards" => $cards->getDeck()
@@ -45,42 +49,12 @@ class JsonCardGameController extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
+
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ['POST'])]
-    public function shuffleCallback(
-        Request $request
-    ): Response {
-        $numCard = $request->request->get('num_cards');
 
-        $card = new CardDeck();
-        for ($i = 1; $i <= $numCard; $i++) {
-            $card->shuffles();
-        }
-
-        return $this->redirectToRoute('api_deck_shuffle_get');
-    }
-
-    #[Route("/api/deck/draw", name: "api_deck_draw_get", methods: ['GET'])]
-    public function draw(): Response
-    {
-        $cards = new CardDeck();
-        $cards->shuffles();
-
-        $data = [
-            "num_cards" => $cards->countCards() - 1,
-            "cards" => $cards->draw(1),
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-    #[Route("/api/deck/draw", name: "api_deck_draw", methods: ['POST'])]
+    #[Route("/api/deck/draw", name: "api_deck_draw", methods: ['GET', 'POST'])]
     public function drawCallback(
         Request $request,
         SessionInterface $session
@@ -96,18 +70,9 @@ class JsonCardGameController extends AbstractController
         $session->set("card_carddraw", $card);
         $session->set("card_cardnum", $numCard);
 
-        return $this->redirectToRoute('api_deck_draw_get');
-    }
-
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_drawmany_get", methods: ['GET'])]
-    public function drawMany(int $num): Response
-    {
-        $cards = new CardDeck();
-        $cards->shuffles();
-
         $data = [
-            "num_cards" => $cards->countCards() - $num,
-            "cards" => $cards->draw($num),
+            "num_cards" => $card->countCards() - 1,
+            "cards" => $card->draw(1),
         ];
 
         $response = new JsonResponse($data);
@@ -117,28 +82,40 @@ class JsonCardGameController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_drawmany", methods: ['POST'])]
+
+    #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_drawmany", methods: ['GET', 'POST'])]
     public function drawManyCallback(
         Request $request,
-        SessionInterface $session
+        SessionInterface $session,
+        int $num
     ): Response {
         $numCard = $request->request->get('num_cards');
 
+        $card = new CardDeck();
+        $card->shuffles();
+
         $cards = [];
         for ($i=1; $i <= $numCard; $i++) {
-            $card = new CardDeck();
-            $card->shuffles();
             $cards[] = $card->draw();
         }
 
         $session->set("card_draw", $cards);
         $session->set("card_num", $numCard);
 
-        return $this->redirectToRoute('api_deck_drawmany_get');
+        $data = [
+            "num_cards" => $card->countCards() - $num,
+            "cards" => $card->draw($num),
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 
 
-    #[Route("/api/play/{players<\d+>}/{cards<\d+>}", name: "api_play", methods: ["GET", "POST"])]
+    #[Route("/api/deck/play/{players<\d+>}/{cards<\d+>}", name: "api_play", methods: ['GET', 'POST'])]
     public function apiDeal(
         SessionInterface $session,
         int $players,

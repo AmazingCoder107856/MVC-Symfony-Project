@@ -4,13 +4,11 @@ namespace App\Controller;
 
 use App\Card\CardDeck;
 use App\Card\CardHand;
-use TypeError;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use TypeError;
 
 class CardGameController extends AbstractController
 {

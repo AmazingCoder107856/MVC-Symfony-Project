@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Library;
 use App\Repository\LibraryRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

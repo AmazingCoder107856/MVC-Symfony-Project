@@ -2,9 +2,8 @@
 
 namespace App\Card;
 
-use PHPUnit\Framework\TestCase;
 use App\Card\Cards;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Cards.

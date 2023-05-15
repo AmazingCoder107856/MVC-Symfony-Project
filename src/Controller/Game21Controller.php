@@ -3,34 +3,29 @@
 namespace App\Controller;
 
 use App\Game21\Game21;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class Game21Controller extends AbstractController
 {
-    /**
-     * @Route("/game", name="game21_page")
-     */
+    #[Route("/game", name: "game21_page")]
     public function game21Page(): Response
     {
         return $this->render('game/page.html.twig');
     }
 
-    /**
-     * @Route("/game/doc", name="game21_documentation")
-     */
+
+    #[Route("/game/doc", name: "game21_documentation")]
     public function game21Documentation(): Response
     {
         return $this->render('game/doc.html.twig');
     }
 
-    /**
-     * @Route("/game/game21", name="game21", methods={"GET","HEAD"})
-     */
+
+    #[Route("/game/game21", name: "game21", methods: ["GET","HEAD"])]
     public function game21(SessionInterface $session): Response
     {
         $session->clear();
@@ -38,9 +33,8 @@ class Game21Controller extends AbstractController
         return $this->render('game/game21.html.twig');
     }
 
-    /**
-    * @Route("/game/game21start", name="game21_process", methods={"POST"})
-    */
+
+    #[Route("/game/game21start", name: "game21_process", methods: ["POST"])]
     public function game21Process(Request $request, SessionInterface $session)
     {
         $play = $request->request->get('play');
@@ -55,9 +49,8 @@ class Game21Controller extends AbstractController
         return $this->redirectToRoute('game21_start');
     }
 
-    /**
-     * @Route("/game/game21start", name="game21_start", methods={"GET", "HEAD"})
-     */
+
+    #[Route("/game/game21start", name: "game21_start", methods: ["GET","HEAD"])]
     public function game21Start(SessionInterface $session): Response
     {
         $game21 = $session->get('game21');
@@ -73,9 +66,8 @@ class Game21Controller extends AbstractController
         return $this->render('game/game21start.html.twig', $data);
     }
 
-    /**
-     * @Route("/game/game21go", name="game21_go", methods={"POST"})
-     */
+
+    #[Route("/game/game21go", name: "game21_go", methods: ["POST"])]
     public function game21GoProcess(Request $request, SessionInterface $session)
     {
         $stay  = $request->request->get('stay');
@@ -93,9 +85,8 @@ class Game21Controller extends AbstractController
         }
     }
 
-    /**
-     * @Route("/game/game21stop", name="game21_stop", methods={"GET", "HEAD"})
-     */
+
+    #[Route("/game/game21stop", name: "game21_stop", methods: ["GET","HEAD"])]
     public function game21Stop(SessionInterface $session): Response
     {
         $game21 = $session->get("game21") ?? new Game21();

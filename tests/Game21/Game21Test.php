@@ -2,9 +2,9 @@
 
 namespace App\Game21;
 
-use PHPUnit\Framework\TestCase;
 use App\Game21\Game21;
 use App\Game21\Player;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Game21.

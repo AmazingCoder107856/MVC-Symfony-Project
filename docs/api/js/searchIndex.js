@@ -111,30 +111,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-JsonCardGameController.html#method_deck"
         },                {
-            "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003Ashuffle\u0028\u0029",
-            "name": "shuffle",
-            "summary": "",
-            "url": "classes/App-Controller-JsonCardGameController.html#method_shuffle"
-        },                {
             "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003AshuffleCallback\u0028\u0029",
             "name": "shuffleCallback",
             "summary": "",
             "url": "classes/App-Controller-JsonCardGameController.html#method_shuffleCallback"
         },                {
-            "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003Adraw\u0028\u0029",
-            "name": "draw",
-            "summary": "",
-            "url": "classes/App-Controller-JsonCardGameController.html#method_draw"
-        },                {
             "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003AdrawCallback\u0028\u0029",
             "name": "drawCallback",
             "summary": "",
             "url": "classes/App-Controller-JsonCardGameController.html#method_drawCallback"
-        },                {
-            "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003AdrawMany\u0028\u0029",
-            "name": "drawMany",
-            "summary": "",
-            "url": "classes/App-Controller-JsonCardGameController.html#method_drawMany"
         },                {
             "fqsen": "\\App\\Controller\\JsonCardGameController\u003A\u003AdrawManyCallback\u0028\u0029",
             "name": "drawManyCallback",

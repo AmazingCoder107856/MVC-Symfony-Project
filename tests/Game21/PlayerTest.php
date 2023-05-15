@@ -2,10 +2,10 @@
 
 namespace App\Game21;
 
-use PHPUnit\Framework\TestCase;
 use App\Card\CardDeck;
 use App\Card\Cards;
 use App\Game21\Player;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for class Player.

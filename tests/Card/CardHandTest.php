@@ -2,10 +2,10 @@
 
 namespace App\Card;
 
-use PHPUnit\Framework\TestCase;
-use App\Card\CardHand;
 use App\Card\CardDeck;
+use App\Card\CardHand;
 use App\Card\Cards;
+use PHPUnit\Framework\TestCase;
 
 
 /**
