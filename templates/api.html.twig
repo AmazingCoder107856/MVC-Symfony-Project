@@ -3,7 +3,7 @@
 {% block title %}API{% endblock %}
 
 {% block body %}
-
+<div class="box-shadow">
     <p>Här kan du hitta appens alla API end points.</p>
 
     <h3>GET <a href="{{ path('api') }}">/api</a></h3>
@@ -32,4 +32,11 @@
 
     <h3>GET <a href="{{ path('api_game') }}">/api/game</a></h3>
     <p>It's a route that shows the start of the Game21.</p>
+
+    <h3>GET <a href="{{ path('api_library_books') }}">/api/library/books</a></h3>
+    <p>It's a route that shows all books in the library.</p>
+
+    <h3>GET <a href="{{ path('api_library_book', {isbn: 9780367886271}) }}">/api/library/book/:isbn</a></h3>
+    <p>It's a route that shows a book via ISBN.</p>
+</div>
 {% endblock %}

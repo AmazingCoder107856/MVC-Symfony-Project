@@ -2,7 +2,7 @@
 
 namespace App\Game21;
 
-use App\Game21\CardDeck;
+use App\Card\CardDeck;
 use App\Game21\Player;
 
 /**
@@ -46,11 +46,11 @@ class Game21
     {
         if ($this->player->scores()  === 21) {
             if ($this->dealer->scores() === 21) {
-                return "You both got Black Jack, its a tie";
+                return "You both got 21, its a tie";
             }
-            return "you won you got Black Jack";
+            return "you won you got 21";
         } elseif ($this->dealer->scores() === 21) {
-            return "Dealer won! he got Black Jack";
+            return "Dealer won! he got 21";
         }
         return "";
     }
@@ -115,11 +115,11 @@ class Game21
 
         if ($this->player->scores() === 21) {
             if ($this->dealer->scores() === 21) {
-                return "you both got Black Jack, its a tie!";
+                return "you both got 21, its a tie!";
             }
-            return "you got Black Jack, you won!";
+            return "you got 21, you won!";
         } elseif ($this->dealer->scores() === 21) {
-            return "dealer got Black Jack, Dealer won!";
+            return "dealer got 21, Dealer won!";
         } elseif ($this->player->scores() === $this->dealer->scores()) {
             return "you both have same score, its a tie!";
         } elseif ($this->player->scores() > 21) {

@@ -111,10 +111,17 @@ input {
     background-color: rgb(255, 255, 255);
     margin: auto;
     width: 80%;
+    max-width: 100%;
     padding: 30px;
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
     height: 100%;
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100%;
+    }
 }
 
 h1 {
@@ -459,4 +466,61 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.card-wrapper {
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    min-height: 900px;
+    padding: 20px;
+}
+
+.card-wrapper-two {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: green;
+}
+
+.player-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: green;
+
+}
+
+.player {
+    margin: 10px;
+    border: 3px solid black;
+
+}
+
+.book {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.4rem;
+    padding: 1.4rem;
+    background-color: #7e653640;
+    width: 640px;
+    margin: 0 auto;
+
+    .image {
+        max-height: 480px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1.4rem;
+    }
+}
+
+.box-shadow {
+    font-family: cursive, sans-serif;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 20px 23px #7fecad;
 }

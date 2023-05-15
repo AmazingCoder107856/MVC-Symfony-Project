@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    {% set imgSrc =  asset('img/library/library.jpg') %}
+    {% if library.getImageUrl() %}
+        {% set imgSrc = library.getImageUrl() %}
+    {% endif %}
+
+    <div class="book image">
+        <img src="{{ imgSrc }}" alt="{{ library.getBookTitle() }}">
+        <div class="text">
+            <h3>{{ library.getBookTitle() }}</h3>
+            <h4><i>{{ library.getBookAuthor() }}</i></h4>
+            <p>{{ library.getBookIsbn() }}</p>
+        </div>
+    </div>
+    <br>
+    <form action={{ path('library') }}>
+        <center><button type="submit" class="btn btn-primary">Back</button></center>
+    </form>
+{% endblock %}

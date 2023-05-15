@@ -58,39 +58,45 @@
     
 
     <h2 id="kmom03">Kmom03: Applikation</h2>
-    <p>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
-
-        Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+    <p>Detta kursmoment kändes väldigt stort och så mycket att göra för att uppfylla kraven bland annat att modelera kortspelet med flödesdiagram samt psuedokod. Men det gick väldigt smidigt och fick ihop alla som behövs att göra i det här kursmomentet.
+        Youtube föreläsningar, discord, google, stackoverflow, github stödjer mig för att lösa och strukturera mina kod kring en applikation. I början har jag tänk att utveckla en poker kortspel men det var väldigt svårt och kommer inte att hinna klara uppgiften. Då 
+        håller jag på Game21, ett lättare varianten av Blackjack spel. Jag har lagt alla klasser under katalogen src/Game21 som jag använde för att modelera min mini Game21 spel. Dessa klasser är bland annat Cards, CardDeck, CardHand, PLayer och Game21. 
+        Jag har skapat Game21Controller under src/controller för att visa mitt spel på webben samt har jag lagt på JsonCardGameController min json version av game21. Jag har Game21 som min game landningssida som befinner sig alla twig html under templates/game. 
+        När man trycker på Game21 då kommer man till en liten presentation av Game21 spel. Jag har skapat 2 buttons (Game21 rule och Game21 Documentation) där kan man välja att trycka för att läsa regler och documentation av spelet. Om man trycker på Game21 rules,
+        kommer till en sida där man kan läsa regler samt en knapp för att börja spelet. Jag tror att jag har gjort allt krav och jag är väldigt nöjd men jag kommer att utveckla mer den på nästa kursmoment. Det finns så många saker jag vill ändra men har inte så mycket
+        tid och jag har så mycket kvar att göra. Det känns bra för att koda i ett ramverk som Symfony och har lärt mig mycket att lägga inte för mycket kod på controller. 
         
-        Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?
-        
-        Vilken är din TIL för detta kmom?</p>
+        Min TIL för detta kmom är att försöka placera all applikationkod i klasser som kontroller använder så att ha så lite kod som möjligt i kontroller.</p>
     
 
     <h2 id="kmom04">Kmom04: Enhetstestning</h2>
-    <p>Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.
-
-        Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?
+    <p>Att skriva kod och testar min kod med PHPUnit känns bra och smidigt eftersom jag kan se vilka fel och vad ska jag rätta till samt få en lista över vilka rader i koden som har körts.
+        Jag tycker att PHPUnit testverktyg är ett bra verktyg att använda för att testa som utvecklare. Vi har jobbat likadana innan på OOP med enhetstestning, då har jag lite koll hur testning funkar.</p>
+    
+    <p>Jag har försökt många gånger att ändra mina koder för att uppnå minst 90% överallt men det lyckades jag inte, iallafall den landade mellan 70%-100% och alla är grönt. Det var inte så lätt att göra
+        testfall men jag gjorde vad jag kunde och kändes bra att nå några av mina metoder och koder nått mer än 90%. Efter att ha läst om stubs och kolla på exempel hur den funkar, då lägger jag till en stub fil
+        och plötsligt det gick bra att skriva test. Nästan alla errors forsvann och fick jag 100%.</p>
+    
+    <p>I början hade jag för många metoder och koder som är inte nödvändigt till mitt spel samt jag lagt till alla mina filer som finns på Card till Game21 igen och ändrade namnet eftersom det körs inte om jag använder
+        samma namn som redan finns. Men till slut jag fick mycket förståelse att man behöver inte göra det. Då tog jag bort de filer som är redan finns på Card katalogen och refera den på Game som use App\Card\Cards istället
+        för att ha så många filer som inehåller likadana med olika class namn. Nu har jag bara 2 klasser in min Game katalog samt använder jag de filer som finns på Card katalog på min GameController. Då behöver jag inte 
+        göra ett testfall på de igen. Till slut fick jag 100% när jag körde composer phpunit igen.</p>
         
-        Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
+    <p>Jag anser att testbar kod är något som kan identifiera “snygg och ren kod” och inte gör för mycket onödiga metoder och håller på KISS principen. Just nu har jag alltid påminna mig själv om KISS och säg till mig
+        själv, "Keep It Simple Studpid".</p>
         
-        Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
-        
-        Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
-        
-        Vilken är din TIL för detta kmom?</p>
+    <p>Min TIL för detta kmom är framförallt att använda KISS principen. Jag fick lära mig att skriva DRY kod för att få bra phpdoc dokumentaion samt kör testfallet till 100%.</p>
     
 
     <h2 id="kmom05">Kmom05: ORM / Databas</h2>
-    <p>Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade på under övningen?
+    <p>Det gick smidigt och kändes bra faktiskt att jobba igenom övningen med Symfony och Doctrine. Det gör lättare att skriva kod efter att ha gjort övningarna och få se hur allt funkar.</p>
 
-        Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt på användargränssnittet? Gick det bra att jobba med ORM i CRUD eller vad anser du om det?
+    <p>Jag tycker att jag har lyckats att bygga upp min applikation med ORM i CRUD. Användningssnittet kan man säga upp till 100%. Den funkar som det ska och jag fick ordning på min design med. Jag tycker att det ser som 
+        en riktig library databas men självklart det finns alltid mer att utveckla.</p>
+
+    <p>Min uppfattning om ORM så här långt är att kunna se hur man kopplar ihop databasen med resten av koden.</p>
         
-        Berätta om du gjorde (delar av) extrauppgiften med användare och login.
-        
-        Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med applikationskod mot databaser?
-        
-        Vilken är din TIL för detta kmom?</p>
+    <p>Min TIL för detta kmom är att det finns redan färdiga moduler som man kan använda och de är kraftfulla och sköter några delar och man behöver inte skriva för mycket kod/metoder/klasser själv.</p>
     
 
     <h2 id="kmom06">Kmom06: Automatiserad test</h2>

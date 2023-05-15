@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="35" assertions="39" errors="0" failures="0" skipped="0" time="2.191070">
+    <testsuite name="all" tests="35" assertions="39" errors="0" failures="0" skipped="0" time="2.191070">
+      <testsuite name="App\Card\CardDeckTest" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" tests="8" assertions="9" errors="0" failures="0" skipped="0" time="0.672988">
+        <testcase name="testCreate" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="19" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.328903"/>
+        <testcase name="testCountCards" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="28" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.007284"/>
+        <testcase name="testGetDeck" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="40" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="2" time="0.020888"/>
+        <testcase name="testShuffleDeck" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="57" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.192241"/>
+        <testcase name="testDrawCardWithNoArgs" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="76" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.049136"/>
+        <testcase name="testDrawCardWithArgs" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="91" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.020660"/>
+        <testcase name="testDrawExceptionOutofBounds" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="108" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.044663"/>
+        <testcase name="testDrawExceptionEmpyDeck" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardDeckTest.php" line="123" class="App\Card\CardDeckTest" classname="App.Card.CardDeckTest" assertions="1" time="0.009213"/>
+      </testsuite>
+      <testsuite name="App\Card\CardHandTest" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardHandTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.102872">
+        <testcase name="testCreateHand" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardHandTest.php" line="20" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" assertions="1" time="0.061831"/>
+        <testcase name="testGetHandWEmptyHand" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardHandTest.php" line="30" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" assertions="1" time="0.009961"/>
+        <testcase name="testGetHand1Card" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardHandTest.php" line="43" class="App\Card\CardHandTest" classname="App.Card.CardHandTest" assertions="1" time="0.031081"/>
+      </testsuite>
+      <testsuite name="App\Card\CardsTest" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardsTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.245669">
+        <testcase name="testCreate" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardsTest.php" line="18" class="App\Card\CardsTest" classname="App.Card.CardsTest" assertions="1" time="0.023850"/>
+        <testcase name="testPointMethodWhenPointIsGiven" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardsTest.php" line="28" class="App\Card\CardsTest" classname="App.Card.CardsTest" assertions="1" time="0.015163"/>
+        <testcase name="testPointIsDefaultZero" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardsTest.php" line="39" class="App\Card\CardsTest" classname="App.Card.CardsTest" assertions="1" time="0.004038"/>
+        <testcase name="testGetStringBack" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Card\CardsTest.php" line="50" class="App\Card\CardsTest" classname="App.Card.CardsTest" assertions="1" time="0.202617"/>
+      </testsuite>
+      <testsuite name="App\Game21\Game21Test" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" tests="13" assertions="14" errors="0" failures="0" skipped="0" time="1.057205">
+        <testcase name="testGame21Construct" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="17" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="2" time="0.344757"/>
+        <testcase name="testFirstGivePlayer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="28" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.004232"/>
+        <testcase name="testFirstGiveDealer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="42" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.005550"/>
+        <testcase name="testHitPlayer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="56" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.004404"/>
+        <testcase name="testFirstDrawW0Point" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="70" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.004198"/>
+        <testcase name="testcheckFirstDraw21All" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="83" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.506127"/>
+        <testcase name="testcheckFirstDraw21Player" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="107" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.016518"/>
+        <testcase name="testcheckFirstDraw21Dealer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="130" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.055649"/>
+        <testcase name="testCheckPlayerwins" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="153" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.033691"/>
+        <testcase name="testGetPlayerScoreReturnsInt" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="177" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.015778"/>
+        <testcase name="testGetDealerScoreReturnsInt" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="193" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.012800"/>
+        <testcase name="testGameStopBoth21" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="207" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.026891"/>
+        <testcase name="testcheckGamestop21Dealer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\Game21Test.php" line="230" class="App\Game21\Game21Test" classname="App.Game21.Game21Test" assertions="1" time="0.026610"/>
+      </testsuite>
+      <testsuite name="App\Game21\PlayerTest" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" tests="7" assertions="9" errors="0" failures="0" skipped="0" time="0.112337">
+        <testcase name="testCreatePlayer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="18" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="1" time="0.016478"/>
+        <testcase name="testGetHandPlayer" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="29" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="1" time="0.013760"/>
+        <testcase name="testTheFirstDeal" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="42" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="2" time="0.017294"/>
+        <testcase name="testTheHitFunction" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="59" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="2" time="0.018042"/>
+        <testcase name="testScore" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="76" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="1" time="0.015680"/>
+        <testcase name="testScoreW1AceOver21" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="93" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="1" time="0.014884"/>
+        <testcase name="testScoreW2AceOver21" file="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\tests\Game21\PlayerTest.php" line="111" class="App\Game21\PlayerTest" classname="App.Game21.PlayerTest" assertions="1" time="0.016199"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

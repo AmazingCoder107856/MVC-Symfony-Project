@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    <br>
+    {{ include('flash.html.twig') }}
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for library in libraries %}
+                <tr>
+                    <th scope="row">{{ library.getId() }}</th>
+                    <td>
+                        <a href="{{ path('library_read', {id: library.getId()})}}">
+                            {{ library.getBookTitle() }}
+                        </a>
+                    </td>
+                    <td>{{ library.getBookAuthor() }}</td>
+                    <td> {{ library.getBookIsbn() }} </td>
+                    <td>
+                        <a href="{{ path('library_update', {id: library.getId()})}}">
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post" id="delete-book-{{ library.getId() }}" action="{{ path('library_delete') }}">
+                            <input type="hidden" name="library_id" value="{{ library.getId() }}">
+                        </form>
+
+                        <a href="#" onclick="document.getElementById('delete-book-{{ library.getId() }}').submit()">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <form action={{ path('library_create') }}>
+            <center><button type="submit" class="btn btn-primary">Add another book</button></center>
+        </form>
+    </div>
+{% endblock %}

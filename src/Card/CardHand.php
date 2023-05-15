@@ -2,21 +2,36 @@
 
 namespace App\Card;
 
-use App\Card\CardAbstract;
-
-class CardHand extends CardAbstract
+/**
+ * Class CardHand.
+ */
+class CardHand
 {
-    public function revealAll(): void
+    protected array $hand;
+
+    /**
+     * CardHand constructor.
+     */
+    public function __construct()
     {
-        foreach ($this->cards as $card) {
-            $card->reveal();
-        }
+        $this->hand = [];
     }
 
-    public function hideAll(): void
+    /**
+     * Method to get a hand.
+     * @return array
+     */
+    public function getHand(): array
     {
-        foreach ($this->cards as $card) {
-            $card->hide();
-        }
+        return $this->hand;
+    }
+
+    /**
+     * Method to add card.
+     * @return void
+     */
+    public function addCardHand(array $card): void
+    {
+        $this->hand[] = $card;
     }
 }

@@ -8,10 +8,14 @@
 <p>Here are the value of the cards drawn.</p>
 
 <h3>Cards left: {{ num_cards }} cards</h3>
-<div class="draw">
-{% for card in cardString %}
-    <img src="{{ asset('img/cards/' ~ card) }} " width="100px" alt="cards">
-{% endfor %}
+<div class="card-wrapper-two">
+    {% for card in cards %}
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+    {% endfor %}
 </div>
 
 <p>Try to draw 

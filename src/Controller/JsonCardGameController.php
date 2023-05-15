@@ -2,12 +2,8 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\Deck;
-use App\Card\DeckofCards;
+use App\Card\CardDeck;
 use App\Card\CardHand;
-use App\Game21\Game21;
-use Exception;
 use TypeError;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,10 +18,10 @@ class JsonCardGameController extends AbstractController
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function deck(): Response
     {
-        $card = new Card();
+        $cards = new CardDeck();
 
         $data = [
-            "cards" => $card->buildDeck(),
+            "cards" => $cards->getDeck()
         ];
 
         $response = new JsonResponse($data);
@@ -38,10 +34,11 @@ class JsonCardGameController extends AbstractController
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle_get", methods: ['GET'])]
     public function shuffle(): Response
     {
-        $card = new Deck();
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "cards" => $card->getDeckShuffled(),
+            "cards" => $cards->getDeck()
         ];
 
         $response = new JsonResponse($data);
@@ -57,9 +54,9 @@ class JsonCardGameController extends AbstractController
     ): Response {
         $numCard = $request->request->get('num_cards');
 
-        $card = new Deck();
+        $card = new CardDeck();
         for ($i = 1; $i <= $numCard; $i++) {
-            $card->getDeckShuffled();
+            $card->shuffles();
         }
 
         return $this->redirectToRoute('api_deck_shuffle_get');
@@ -68,11 +65,12 @@ class JsonCardGameController extends AbstractController
     #[Route("/api/deck/draw", name: "api_deck_draw_get", methods: ['GET'])]
     public function draw(): Response
     {
-        $card = new Deck();
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "num_cards" => (count($card->getDeckShuffled()) - 1),
-            "cardString" => $card->drawOneCard(),
+            "num_cards" => $cards->countCards() - 1,
+            "cards" => $cards->draw(1),
         ];
 
         $response = new JsonResponse($data);
@@ -89,9 +87,10 @@ class JsonCardGameController extends AbstractController
     ): Response {
         $numCard = $request->request->get('num_cards');
 
-        $card = new Deck();
+        $card = new CardDeck();
+        $card->shuffles();
         for ($i = 1; $i <= $numCard; $i++) {
-            $card->drawOneCard();
+            $card->draw();
         }
 
         $session->set("card_carddraw", $card);
@@ -103,15 +102,12 @@ class JsonCardGameController extends AbstractController
     #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_drawmany_get", methods: ['GET'])]
     public function drawMany(int $num): Response
     {
-        $cards = [];
-        for ($i=1; $i <= $num; $i++) {
-            $card = new Deck();
-            $cards[] = $card->drawOneCard();
-        }
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "num_cards" => (52 - $num),
-            "cardString" => $cards
+            "num_cards" => $cards->countCards() - $num,
+            "cards" => $cards->draw($num),
         ];
 
         $response = new JsonResponse($data);
@@ -130,8 +126,9 @@ class JsonCardGameController extends AbstractController
 
         $cards = [];
         for ($i=1; $i <= $numCard; $i++) {
-            $card = new Deck();
-            $cards[] = $card->drawOneCard();
+            $card = new CardDeck();
+            $card->shuffles();
+            $cards[] = $card->draw();
         }
 
         $session->set("card_draw", $cards);
@@ -140,22 +137,6 @@ class JsonCardGameController extends AbstractController
         return $this->redirectToRoute('api_deck_drawmany_get');
     }
 
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_draw_number")]
-    public function drawManyCards(int $num): Response
-    {
-        $cards = [];
-        for ($i=1; $i <= $num; $i++) {
-            $card = new Deck();
-            $cards[] = $card->drawOneCard();
-        }
-
-        $data = [
-            "num_cards" => (count($card->getDeckShuffled()) - $num),
-            "cardString" => $cards
-        ];
-
-        return $this->render('card/draw_many.html.twig', $data);
-    }
 
     #[Route("/api/play/{players<\d+>}/{cards<\d+>}", name: "api_play", methods: ["GET", "POST"])]
     public function apiDeal(
@@ -163,56 +144,30 @@ class JsonCardGameController extends AbstractController
         int $players,
         int $cards
     ): Response {
-        $deck = $session->get("deck") ?? new DeckofCards();
+        $deck = $session->get("deck") ?? new CardDeck();
+        $deck->shuffles();
         $session->set("deck", $deck);
         $hands = [];
 
-        for ($i = 1; $i <= $players; $i++) {
-            $hands["player" . $i] = new CardHand();
+        for ($i = 0; $i < $players; $i++) {
+            $hands[] = new CardHand();
         }
 
-        for ($j = 0; $j < $cards; $j++) {
-            foreach ($hands as $hand) {
+        foreach ($hands as $hand) {
+            for ($j = 0; $j < $cards; $j++) {
                 try {
-                    $hand->add($deck->draw());
-                } catch (TypeError $e) {
+                    $card = $deck->draw($cards);
+                    $hand->addCardHand($card);
+                } catch (TypeError) {
                     break;
                 }
             }
         }
 
         $data = [
-            'cardsRemaining' => $deck->getCardsRemaining(),
-            'hands' => array_map(function ($hand) { return $hand->peekAllCards(); }, $hands)
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $response;
-    }
-
-    #[Route("/api/game", name: "api_game", methods: ["GET"])]
-    public function apiGame(SessionInterface $session): Response
-    {
-        $game21 = $session->get("game21") ?? new Game21();
-        // $session->set("deck", $game21);
-
-        // $play = $request->request->get('play');
-
-        if ($game21) {
-            $game21->firstPlay();
-            $session->set('game21', $game21);
-        }
-
-        $data = [
-            'dealer' => $game21 ->getDealerCards(),
-            'player' => $game21 ->getPlayerCards(),
-            'dealerscore' => $game21 ->getDealerScore(),
-            'playerscore' => $game21->getPlayerScore(),
-            'firstdraw' => $game21 ->checkFirstDraw()
+            'deck' => $deck,
+            'hands' => $hands,
+            "cards" => $deck->draw($cards)
         ];
 
         $response = new JsonResponse($data);

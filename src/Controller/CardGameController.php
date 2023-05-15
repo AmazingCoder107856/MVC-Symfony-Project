@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\Deck;
-use App\Card\DeckofCards;
+use App\Card\CardDeck;
 use App\Card\CardHand;
-use Exception;
 use TypeError;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,90 +20,99 @@ class CardGameController extends AbstractController
         return $this->render('card/page.html.twig');
     }
 
+
     #[Route("/card/deck", name: "card_deck")]
     public function sortedCards(): Response
     {
-        $card = new Card();
+        $cards = new CardDeck();
 
         $data = [
-            "cards" => $card->buildDeck(),
+            "cards" => $cards->getDeck()
         ];
 
         return $this->render('card/deck.html.twig', $data);
     }
 
+
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
     public function shuffledCards(): Response
     {
-        $card = new Deck();
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "cards" => $card->getDeckShuffled(),
+            "cards" => $cards->getDeck()
         ];
 
         return $this->render('card/shuffle.html.twig', $data);
     }
 
+
     #[Route("/card/deck/draw", name: "card_deck_draw")]
     public function drawCard(): Response
     {
-        $card = new Deck();
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "num_cards" => (count($card->getDeckShuffled()) - 1),
-            "cardString" => $card->drawOneCard(),
+            "num_cards" => $cards->countCards() - 1,
+            "cards" => $cards->draw(1),
         ];
 
         return $this->render('card/draw.html.twig', $data);
     }
 
+
     #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_numbers")]
     public function drawManyCards(int $num): Response
     {
-        $cards = [];
-        $totcards = 52;
-        for ($i=1; $i <= $num; $i++) {
-            $card = new Deck();
-            $cards[] = $card->drawOneCard();
-        }
+        $cards = new CardDeck();
+        $cards->shuffles();
 
         $data = [
-            "num_cards" => ($totcards - $num),
-            "cardString" => $cards
+            "num_cards" => $cards->countCards() - $num,
+            "cards" => $cards->draw($num),
         ];
 
         return $this->render('card/draw_many.html.twig', $data);
     }
 
-    #[Route("/card/cardplay/{players<\d+>}/{cards<\d+>}", name: "card_play")]
+
+    #[Route("/card/cardplay/{players}/{cards}", name: "card_play")]
     public function cardPlay(
         SessionInterface $session,
         int $players,
         int $cards
     ): Response {
-        $deck = $session->get("deck") ?? new DeckofCards();
-        $session->set("deck", $deck);
+        $deck = new CardDeck();
+        $deck->shuffles();
+        $deck->getDeck();
         $hands = [];
 
-        // ge varje spela en hand
+        $deck1 = $session->get("deck") ?? $deck;
+
         for ($i = 0; $i < $players; $i++) {
             $hands[] = new CardHand();
         }
 
-        // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut
         for ($j = 0; $j < $cards; $j++) {
             foreach ($hands as $hand) {
                 try {
-                    $hand->add($deck->draw());
+                    $card = $deck->draw();
+                    $hand->addCardHand($card);
                 } catch (TypeError $e) {
                     break;
                 }
             }
+            $session->set("deck", $deck1);
         }
 
-        return $this->render('card/cardplay.html.twig', [
-            'deck' => $deck,
+        $data = [
+            'deck' => $deck1,
             'hands' => $hands,
-        ]);
+            "cards" => $deck1->draw()
+        ];
+
+        return $this->render('card/cardplay.html.twig', $data);
     }
 }

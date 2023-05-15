@@ -2,7 +2,7 @@
 
 namespace App\Game21;
 
-use App\Game21\CardDeck;
+use App\Card\CardDeck;
 
 /**
  *  Class Player. Represent a player of game21 either dealer or player.
