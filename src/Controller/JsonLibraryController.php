@@ -35,7 +35,7 @@ class JsonLibraryController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/library/book/{isbn}", name: "api_library_book", methods: ["GET"])]
+    #[Route("/api/library/book/{bookIsbn}", name: "api_library_book", methods: ["GET"])]
     public function apiLibraryBook(
         LibraryRepository $libraryRepo,
         mixed $bookIsbn

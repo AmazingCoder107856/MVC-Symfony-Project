@@ -21,14 +21,14 @@
                 <tr>
                     <th scope="row">{{ library.getId() }}</th>
                     <td>
-                        <a href="{{ path('library_read', {bookId: library.getId()})}}">
+                        <a href="{{ path('library_read', {id: library.getId()})}}">
                             {{ library.getBookTitle() }}
                         </a>
                     </td>
                     <td>{{ library.getBookAuthor() }}</td>
                     <td> {{ library.getBookIsbn() }} </td>
                     <td>
-                        <a href="{{ path('library_update', {bookId: library.getId()})}}">
+                        <a href="{{ path('library_update', {id: library.getId()})}}">
                             Edit
                         </a>
                     </td>

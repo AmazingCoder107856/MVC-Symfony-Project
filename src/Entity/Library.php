@@ -11,7 +11,7 @@ class Library
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $bookId = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $bookTitle = null;
@@ -27,7 +27,7 @@ class Library
 
     public function getId(): ?int
     {
-        return $this->bookId;
+        return $this->id;
     }
 
     public function getBookTitle(): ?string

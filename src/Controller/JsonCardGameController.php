@@ -133,7 +133,7 @@ class JsonCardGameController extends AbstractController
         foreach ($hands as $hand) {
             for ($j = 0; $j < $cards; $j++) {
                 try {
-                    $card = $deck->draw($cards);
+                    $card = $deck->draw();
                     $hand->addCardHand($card);
                 } catch (TypeError) {
                     break;
@@ -144,7 +144,7 @@ class JsonCardGameController extends AbstractController
         $data = [
             'deck' => $deck,
             'hands' => $hands,
-            "cards" => $deck->draw($cards)
+            "cards" => $deck->draw()
         ];
 
         $response = new JsonResponse($data);

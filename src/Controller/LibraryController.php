@@ -55,9 +55,9 @@ class LibraryController extends AbstractController
     #[Route('/library/read/{id<\d+>}', name: 'library_read')]
     public function readBook(
         LibraryRepository $libraryRepo,
-        int $bookId
+        int $id
     ): Response {
-        $library = $libraryRepo->find($bookId);
+        $library = $libraryRepo->find($id);
 
         if (!$library) {
             $this->addFlash('notification:', "The book is not available.");
@@ -97,9 +97,9 @@ class LibraryController extends AbstractController
         LibraryRepository $libraryRepo,
         Request $request,
         ManagerRegistry $doctrine,
-        int $bookId
+        int $id
     ): Response {
-        $library = $libraryRepo->find($bookId);
+        $library = $libraryRepo->find($id);
 
         if (!$library) {
             $this->addFlash('notification:', "The book is not available.");

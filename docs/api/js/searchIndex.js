@@ -511,10 +511,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Library.html#method_setImageUrl"
         },                {
-            "fqsen": "\\App\\Entity\\Library\u003A\u003A\u0024bookId",
-            "name": "bookId",
+            "fqsen": "\\App\\Entity\\Library\u003A\u003A\u0024id",
+            "name": "id",
             "summary": "",
-            "url": "classes/App-Entity-Library.html#property_bookId"
+            "url": "classes/App-Entity-Library.html#property_id"
         },                {
             "fqsen": "\\App\\Entity\\Library\u003A\u003A\u0024bookTitle",
             "name": "bookTitle",
