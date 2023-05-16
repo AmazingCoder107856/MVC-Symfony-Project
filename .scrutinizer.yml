@@ -8,7 +8,7 @@ build:
     image: default-bionic
 
     dependencies:
-        overrride:
+        override:
             - true
     nodes:
         my-tests:
