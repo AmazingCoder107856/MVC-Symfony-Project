@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684275748">
-  <project timestamp="1684275748">
+<coverage generated="1684277120">
+  <project timestamp="1684277120">
     <file name="C:\Users\Palm\cygwin64\home\Palm\dbwebb-kurser\mvc\me\report\src\Card\CardDeck.php">
       <class name="App\Card\CardDeck" namespace="global">
         <metrics complexity="13" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="18" elements="24" coveredelements="22"/>
