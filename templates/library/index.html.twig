@@ -21,20 +21,20 @@
                 <tr>
                     <th scope="row">{{ library.getId() }}</th>
                     <td>
-                        <a href="{{ path('library_read', {id: library.getId()})}}">
+                        <a href="{{ path('library_read', {bookId: library.getId()})}}">
                             {{ library.getBookTitle() }}
                         </a>
                     </td>
                     <td>{{ library.getBookAuthor() }}</td>
                     <td> {{ library.getBookIsbn() }} </td>
                     <td>
-                        <a href="{{ path('library_update', {id: library.getId()})}}">
+                        <a href="{{ path('library_update', {bookId: library.getId()})}}">
                             Edit
                         </a>
                     </td>
                     <td>
                         <form method="post" id="delete-book-{{ library.getId() }}" action="{{ path('library_delete') }}">
-                            <input type="hidden" name="library_id" value="{{ library.getId() }}">
+                            <input type="hidden" name="libraryId" value="{{ library.getId() }}">
                         </form>
 
                         <a href="#" onclick="document.getElementById('delete-book-{{ library.getId() }}').submit()">Delete</a>

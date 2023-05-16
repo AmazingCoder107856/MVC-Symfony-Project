@@ -32,16 +32,16 @@ class LibraryController extends AbstractController
             return $this->render('library/create.html.twig');
         }
 
-        $book_title = strval($request->request->get('book_title'));
-        $book_author = strval($request->request->get('book_author'));
-        $book_isbn = strval($request->request->get('book_isbn'));
-        $image_url = strval($request->request->get('image_url'));
+        $bookTitle = strval($request->request->get('bookTitle'));
+        $bookAuthor = strval($request->request->get('bookAuthor'));
+        $bookIsbn = strval($request->request->get('bookIsbn'));
+        $imageUrl = strval($request->request->get('imageUrl'));
 
         $library = new Library();
-        $library->setBookTitle($book_title);
-        $library->setBookAuthor($book_author);
-        $library->setBookIsbn($book_isbn);
-        $library->setImageUrl($image_url);
+        $library->setBookTitle($bookTitle);
+        $library->setBookAuthor($bookAuthor);
+        $library->setBookIsbn($bookIsbn);
+        $library->setImageUrl($imageUrl);
 
         $entityManager = $doctrine->getManager();
         $entityManager->persist($library);
@@ -53,11 +53,11 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/read/{id<\d+>}', name: 'library_read')]
-    public function ReadABook(
+    public function readBook(
         LibraryRepository $libraryRepo,
-        int $id
+        int $bookId
     ): Response {
-        $library = $libraryRepo->find($id);
+        $library = $libraryRepo->find($bookId);
 
         if (!$library) {
             $this->addFlash('notification:', "The book is not available.");
@@ -76,7 +76,7 @@ class LibraryController extends AbstractController
         LibraryRepository $libraryRepo,
         ManagerRegistry $doctrine
     ): Response {
-        $libraryId = $request->request->get('library_id');
+        $libraryId = $request->request->get('libraryId');
         $library = $libraryRepo->find($libraryId);
         $flash = "Book cannot be found in the database.";
 
@@ -93,13 +93,13 @@ class LibraryController extends AbstractController
     }
 
     #[Route('/library/update/{id<\d+>}', name: 'library_update', methods: ["GET", "POST"])]
-    public function UpdateABook(
+    public function updateBook(
         LibraryRepository $libraryRepo,
         Request $request,
         ManagerRegistry $doctrine,
-        int $id
+        int $bookId
     ): Response {
-        $library = $libraryRepo->find($id);
+        $library = $libraryRepo->find($bookId);
 
         if (!$library) {
             $this->addFlash('notification:', "The book is not available.");
@@ -113,15 +113,15 @@ class LibraryController extends AbstractController
             ]);
         }
 
-        $book_title = strval($request->request->get('book_title'));
-        $book_author = strval($request->request->get('book_author'));
-        $book_isbn = strval($request->request->get('book_isbn'));
-        $image_url = strval($request->request->get('image_url'));
+        $bookTitle = strval($request->request->get('bookTitle'));
+        $bookAuthor = strval($request->request->get('bookAuthor'));
+        $bookIsbn = strval($request->request->get('bookIsbn'));
+        $imageUrl = strval($request->request->get('imageUrl'));
 
-        $library->setBookTitle($book_title);
-        $library->setBookAuthor($book_author);
-        $library->setBookIsbn($book_isbn);
-        $library->setImageUrl($image_url);
+        $library->setBookTitle($bookTitle);
+        $library->setBookAuthor($bookAuthor);
+        $library->setBookIsbn($bookIsbn);
+        $library->setImageUrl($imageUrl);
 
         $entityManager = $doctrine->getManager();
         $entityManager->persist($library);

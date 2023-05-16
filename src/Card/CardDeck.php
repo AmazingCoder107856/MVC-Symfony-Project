@@ -77,7 +77,7 @@ class CardDeck
 
         for ($i = 0; $i <= $cards - 1; $i++) {
             $hand[] = $this->deck[0];
-            $newDeck = array_shift($this->deck);
+            array_shift($this->deck);
         }
         return $hand;
     }

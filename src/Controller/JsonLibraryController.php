@@ -20,10 +20,10 @@ class JsonLibraryController extends AbstractController
         $libraries = $libraryRepo->findAll();
         foreach ($libraries as $library) {
             $data[] = [
-                'booK_title' => $library->getBookTitle() ?? null,
-                'book_author' => $library->getBookAuthor() ?? null,
-                'book_isbn' => $library->getBookIsbn() ?? null,
-                'image_url' => $library->getImageUrl() ?? null,
+                'bookTitle' => $library->getBookTitle() ?? null,
+                'bookAuthor' => $library->getBookAuthor() ?? null,
+                'bookIsbn' => $library->getBookIsbn() ?? null,
+                'imageUrl' => $library->getImageUrl() ?? null,
             ];
         }
 
@@ -38,17 +38,17 @@ class JsonLibraryController extends AbstractController
     #[Route("/api/library/book/{isbn}", name: "api_library_book", methods: ["GET"])]
     public function apiLibraryBook(
         LibraryRepository $libraryRepo,
-        mixed $book_isbn
+        mixed $bookIsbn
     ): Response {
-        $library = $libraryRepo->findOneBy(['book_isbn' => $book_isbn]);
+        $library = $libraryRepo->findOneBy(['bookIsbn' => $bookIsbn]);
         $data = [];
 
         if ($library) {
             $data[] = [
-                'book_title' => $library->getBookTitle() ?? null,
-                'book_author' => $library->getBookAuthor() ?? null,
-                'book_isbn' => $library->getBookIsbn() ?? null,
-                'image_url' => $library->getImageUrl() ?? null,
+                'bookTitle' => $library->getBookTitle() ?? null,
+                'bookAuthor' => $library->getBookAuthor() ?? null,
+                'bookIsbn' => $library->getBookIsbn() ?? null,
+                'imageUrl' => $library->getImageUrl() ?? null,
             ];
         }
 

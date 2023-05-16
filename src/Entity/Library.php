@@ -11,69 +11,69 @@ class Library
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $bookId = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $book_title = null;
+    private ?string $bookTitle = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $book_author = null;
+    private ?string $bookAuthor = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $book_isbn = null;
+    private ?string $bookIsbn = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image_url = null;
+    private ?string $imageUrl = null;
 
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->bookId;
     }
 
     public function getBookTitle(): ?string
     {
-        return $this->book_title;
+        return $this->bookTitle;
     }
 
-    public function setBookTitle(string $book_title): self
+    public function setBookTitle(string $bookTitle): self
     {
-        $this->book_title = $book_title;
+        $this->bookTitle = $bookTitle;
 
         return $this;
     }
 
     public function getBookAuthor(): ?string
     {
-        return $this->book_author;
+        return $this->bookAuthor;
     }
 
-    public function setBookAuthor(string $book_author): self
+    public function setBookAuthor(string $bookAuthor): self
     {
-        $this->book_author = $book_author;
+        $this->bookAuthor = $bookAuthor;
 
         return $this;
     }
 
     public function getBookIsbn(): ?string
     {
-        return $this->book_isbn;
+        return $this->bookIsbn;
     }
 
-    public function setBookIsbn(string $book_isbn): self
+    public function setBookIsbn(string $bookIsbn): self
     {
-        $this->book_isbn = $book_isbn;
+        $this->bookIsbn = $bookIsbn;
 
         return $this;
     }
 
     public function getImageUrl(): ?string
     {
-        return $this->image_url;
+        return $this->imageUrl;
     }
 
-    public function setImageUrl(string $image_url): self
+    public function setImageUrl(string $imageUrl): self
     {
-        $this->image_url = $image_url;
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
