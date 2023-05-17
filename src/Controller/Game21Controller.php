@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Game21Controller extends AbstractController
 {
-    #[Route("/game/page", name: "game21_page", methods: ["GET","HEAD"])]
+    #[Route("/game", name: "game21_page")]
     public function game21Page(): Response
     {
         return $this->render('game/page.html.twig');
     }
 
 
-    #[Route("/game/doc", name: "game21_documentation", methods: ["GET","HEAD"])]
+    #[Route("/game/doc", name: "game21_documentation")]
     public function game21Documentation(): Response
     {
         return $this->render('game/doc.html.twig');
