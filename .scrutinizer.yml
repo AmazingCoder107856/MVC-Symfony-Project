@@ -7,9 +7,7 @@ filter:
 build:
     image: default-bionic
 
-    dependencies:
-        override:
-            - true
+    
     nodes:
         my-tests:
             environment:
@@ -23,7 +21,7 @@ build:
                     - php-scrutinizer-run
     tests:
         override:
-                command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+              - command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
                 coverage:
                     file: "build/coverage.clover"
                     format: "php-clover"
