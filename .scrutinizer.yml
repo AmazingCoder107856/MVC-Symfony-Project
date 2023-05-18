@@ -20,7 +20,7 @@ build:
                     ini:
                         xdebug.mode: coverage
         analysis:
-            my-tests:
+            tests:
                 override:
                     - php-scrutinizer-run
                     - command: phpcs-run
