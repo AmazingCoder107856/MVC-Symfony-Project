@@ -7,10 +7,9 @@ filter:
 build:
     image: default-bionic
 
-    NPM:
-        dependencies:
-            override:
-                - true
+    dependencies:
+        override:
+            - true
     nodes:
         tests:
             environment:
@@ -27,7 +26,7 @@ build:
                     - command: phpcs-run
     tests:
         override:
-              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit --coverage-clover=coverage.clover"
+              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
                 coverage:
                     file: "build/coverage.clover"
                     format: "php-clover"
