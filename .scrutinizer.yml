@@ -23,7 +23,7 @@ build:
                     - php-scrutinizer-run
     tests:
         override:
-              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
+              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit --coverage-clover=build/coverage.clover"
                 coverage:
                     file: "build/coverage.clover"
                     format: "php-clover"
