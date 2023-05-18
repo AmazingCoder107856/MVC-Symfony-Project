@@ -10,8 +10,6 @@ build:
     dependencies:
         override:
             - true
-    tools:
-        external_code_coverage: true
     nodes:
         my-tests:
             environment:
