@@ -20,16 +20,16 @@ build:
                     ini:
                         xdebug.mode: coverage
         analysis:
-            tests:
+            my-tests:
                 override:
                     - php-scrutinizer-run
                     - command: phpcs-run
-        
-    tests:
-        override:
-              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
-                coverage:
-                    file: "build/coverage.clover"
-                    format: "php-clover"
+        coverage:
+            tests:
+                override:
+                      - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
+                        coverage:
+                            file: "build/coverage.clover"
+                            format: "php-clover"
 tools:
     php_code_coverage: true
