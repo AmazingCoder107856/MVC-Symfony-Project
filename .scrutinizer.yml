@@ -26,7 +26,7 @@ build:
                     - command: phpcs-run
     tests:
         override:
-              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
+              - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit --coverage-clover=coverage.clover"
                 coverage:
                     file: "build/coverage.clover"
                     format: "php-clover"
