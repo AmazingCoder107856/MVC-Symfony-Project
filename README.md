@@ -2,6 +2,7 @@ MVC projects
 ================
 
 Scrutinizer badges:
+
 <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/quality-score.png?b=main" alt="Code Quality"></a>
 
 <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/coverage.png?b=main" alt="Code Coverage"></a>
