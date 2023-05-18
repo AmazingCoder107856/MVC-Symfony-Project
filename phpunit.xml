@@ -11,9 +11,7 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <logging>
-    <junit outputFile="docs/junit.xml" />
-  </logging>
+  <logging/>
   <source>
     <include>
       <directory suffix=".php">src</directory>
