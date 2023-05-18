@@ -7,9 +7,10 @@ filter:
 build:
     image: default-bionic
 
-    dependencies:
-        override:
-            - true
+    NPM:
+        dependencies:
+            override:
+                - true
     nodes:
         tests:
             environment:
