@@ -1,5 +1,4 @@
 security:
-<<<<<<< HEAD
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
@@ -15,30 +14,18 @@ security:
                 property: username
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
-=======
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
-    password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
-    providers:
-        users_in_memory: { memory: null }
->>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-<<<<<<< HEAD
             provider: app_user_provider
             #custom_authenticator: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 target: app_login
             custom_authenticator: App\Security\LoginFormAuthenticator
-=======
-            provider: users_in_memory
->>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -49,13 +36,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-<<<<<<< HEAD
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
-=======
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
->>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
 
 when@test:
     security:

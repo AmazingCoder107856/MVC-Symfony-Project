@@ -2,16 +2,12 @@
   "entrypoints": {
     "app": {
       "js": [
-        "builds/runtime.833cb8d0.js",
-        "builds/751.5643cfbd.js",
-        "builds/app.8517d2aa.js"
+        "builds/runtime.js",
+        "builds/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_da-03e5c3.js",
+        "builds/app.js"
       ],
       "css": [
-<<<<<<< HEAD
-        "builds/app.5d087b20.css"
-=======
-        "builds/app.6b61b801.css"
->>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
+        "builds/app.css"
       ]
     }
   }
