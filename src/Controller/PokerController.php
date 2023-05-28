@@ -71,7 +71,7 @@ class PokerController extends AbstractController
         $poker = $session->get('poker');
 
         $playerBal = $session->get('balance');
-
+        
         if ($fold) {
             return $this->redirectToRoute('poker');
         }
