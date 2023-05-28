@@ -47,7 +47,10 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+<<<<<<< HEAD
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+=======
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
         "phpunit/phpunit": "^10.1",
         "symfony/browser-kit": "6.1.*",
         "symfony/css-selector": "6.1.*",
@@ -61,8 +64,12 @@
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
+<<<<<<< HEAD
             "symfony/runtime": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
+=======
+            "symfony/runtime": true
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
         },
         "optimize-autoloader": true,
         "preferred-install": {

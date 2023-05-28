@@ -576,6 +576,7 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-MetricsController.html#method_index"
         },                {
+<<<<<<< HEAD
             "fqsen": "\\App\\Controller\\PokerController",
             "name": "PokerController",
             "summary": "",
@@ -1306,6 +1307,8 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Security-LoginFormAuthenticator.html#property_urlGenerator"
         },                {
+=======
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -1326,11 +1329,14 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-entity.html"
         },                {
+<<<<<<< HEAD
             "fqsen": "\\App\\Form",
             "name": "Form",
             "summary": "",
             "url": "namespaces/app-form.html"
         },                {
+=======
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
             "fqsen": "\\App\\Game21",
             "name": "Game21",
             "summary": "",
@@ -1341,19 +1347,25 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app.html"
         },                {
+<<<<<<< HEAD
             "fqsen": "\\App\\Project",
             "name": "Project",
             "summary": "",
             "url": "namespaces/app-project.html"
         },                {
+=======
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
             "fqsen": "\\App\\Repository",
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+<<<<<<< HEAD
         },                {
             "fqsen": "\\App\\Security",
             "name": "Security",
             "summary": "",
             "url": "namespaces/app-security.html"
+=======
+>>>>>>> 25d8194a9e23c441dd7c38cbe66ebf064f999f02
         }            ]
 );
