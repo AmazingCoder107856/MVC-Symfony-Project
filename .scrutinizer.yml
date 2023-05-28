@@ -28,7 +28,7 @@ build:
         override:
               - command: "XDEBUG_MODE=coverage vendor1/bin/phpunit"
                 coverage:
-                    file: "build/coverage.clover"
+                    file: "docs/coverage.clover"
                     format: "php-clover"
 tools:
     php_code_coverage: true
