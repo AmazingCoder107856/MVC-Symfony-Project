@@ -1,0 +1,38 @@
+{# templates/project/poker.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Poker{% endblock %}
+
+{% block content %}
+	<div class="about-wrapp">
+		<div class="texts">
+			{% if app.user %}
+			<h1>Welcome {{ app.user.username }}!</h1>
+			
+			<h2>Poker Rules</h2>		
+			<p>The goal of a Poker game is to use your hole cards in combination with the community cards to make the best possible five-card poker hand.</p>
+			<ul>
+				<li>In a game, each player is dealt two cards face down (the 'hole cards').</li>
+				<li>Over several betting rounds, five more cards are (eventually) dealt face up in the middle of the table.</li>
+				<li>These face-up cards are called the 'community cards.' Each player is free to use the community cards in combination with their hole cards to build a five-card poker hand.</li>
+			</ul>
+			<p>You can read more about Poker and it's rules in <a href="https://en.wikipedia.org/wiki/Poker">basics of the game on Wikipedia</a>.</p>
+			<p>Press START when you're ready!</p>
+			<br>
+			<form method="post" action="{{ path('poker-start') }}">
+				<input type="submit" name="playpoker" class="button game-btn" value="START">
+			</form>
+			{% else %}
+			<div class="about-wrapp">
+				<div class="texts">
+					<center><h1>Please <a href="{{ app.user ? path('app_logout') : path('app_login') }}">
+						{{ app.user ? 'Logout' : 'Login' }}</a> or <a class="test" href="{{ app.user ? path('app_login') : path('app_register') }}">
+						{{ app.user ? '' : 'Register' }}</a> to start playing.</h1><center>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}

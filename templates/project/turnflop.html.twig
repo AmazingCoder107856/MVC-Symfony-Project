@@ -1,0 +1,80 @@
+{# templates/project/turnflop.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Poker{% endblock %}
+
+{% block content %}
+
+	<div class="dealer">
+		<p>Dealer Cards</p>
+	</div>
+
+
+	<div class="poker-table">
+
+		<div class="dealer-cards">
+			{% for card in dealer %}
+				<div class="outline shadow rounded cover"></div>
+			{% endfor %}
+		</div>
+		<div class="line-one">
+			<div>
+				<p>Total Pot:{{ pot }}</p>
+			</div>
+			<div class="community-cards">
+				{% for card in community %}
+					<div class="outline shadow rounded" style="color:{{ card.color }}">
+						<div class="top">
+							<span>{{ card.value }}</span>
+							<span>{{ card.suit | raw }}</span>
+						</div>
+						<h1 style="color: {{ card.color }}">{{ card.suit | raw }}</h1>
+						<div class="bottom">
+							<span>{{ card.value }}</span>
+							<span>{{ card.suit | raw }}</span>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<form class="poker-form" method="post" action="{{ path('poker-turn') }}">
+
+				<fieldset class="poker-field">
+					<legend>Choose your option:</legend>
+					<div class="flexi">
+						<input type="submit" class="button small" name="fold" value="Fold">
+						<input type="submit" class="button small" name="check" value="Check">
+						<div style="display: flex; flex-direction:column; width: 50%;">
+							<input type="number" name="amount" class="button small" min="50" value="50" max="{{ playerbal }}">
+							<input type="submit" class="button small" name="raise" value="Raise">
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+
+		<div class="your-cards">
+			{% for card in player %}
+				<div class="outline shadow rounded" style="color:{{ card.color }}">
+					<div class="top">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+					<h1 style="color: {{ card.color }}">{{ card.suit | raw }}</h1>
+					<div class="bottom">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="player-bet">
+		<p>User Cards</p>
+		<p>User Pot:
+			{{ playerbal }}
+			SEK
+		</p>
+	</div>
+
+{% endblock %}

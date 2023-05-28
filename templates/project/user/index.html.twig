@@ -1,0 +1,58 @@
+{# templates/project/user/index.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+
+{% block title %}User{% endblock %}
+
+{% block content %}
+
+	<div class="create">
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Username</th>
+					<th scope="col">Fistname</th>
+					<th scope="col">Lastname</th>
+					<th scope="col">Password</th>
+					<th scope="col">Image</th>
+					<th scope="col">Action</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<th scope="row">{{ user.getId() }}</th>
+						<td>{{ user.getUsername() }}</td>
+						<td>{{ user.getFirstname() }}</td>
+						<td>{{ user.getLastname() }}</td>
+						<td>{{ user.getPassword() }}</td>
+						<td>{{ user.getImage() }}</td>
+						<td>
+							<a href="{{ path('user_update', {id: user.getId()})}}">
+								Edit
+							</a>
+						</td>
+						<td>
+							<form method="post" id="delete-user-{{ user.getId() }}" action="{{ path('user_delete') }}">
+								<input type="hidden" name="userId" value="{{ user.getId() }}">
+							</form>
+
+							<a href="#" onclick="document.getElementById('delete-user-{{ user.getId() }}').submit()">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<div>
+			<form action={{ path('user_create') }}>
+				<center><button type="submit" class="btn btn-primary">Add user</button></center>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

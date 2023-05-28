@@ -1,0 +1,15 @@
+{# templates/project/index.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Thanks{% endblock %}
+
+{% block content %}
+    <div class="about-wrapp">
+        <div class="texts">
+            <center><h1>Thank you for register now you can <a href="{{ app.user ? path('app_logout') : path('app_login') }}">
+                {{ app.user ? 'Logout' : 'Login' }}</a> and start playing</h1><center>
+        </div>
+    </div>
+
+{% endblock %}

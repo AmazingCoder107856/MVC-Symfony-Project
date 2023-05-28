@@ -1,0 +1,42 @@
+{# templates/project/user/login.html.twig #}
+
+{% extends 'project/project.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+	<div class="registerform">
+		<center><h1>Please Sign In | <a href="{{ app.user ? path('app_login') : path('app_register') }}">
+			{{ app.user ? '' : 'Register' }}</a></h1></center>
+	</div>
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.userIdentifier }},
+				<a class="test" href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %}		
+		
+		<div class="register">
+			<div>
+				<label for="inputUsername">Username</label>
+				<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+			</div>
+			<div>
+				<label for="inputPassword">Password</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			</div>
+			<div>
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			</div>
+			<div>
+			<center><button class="btn btn-primary" type="submit">Sign in</button></center>
+			</div>
+		</div>
+	</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game21{% endblock %}
+
+{% block body %}
+    <h1>Twenty-one/Vingt-Un</h1>
+    <figure class="figure right">
+        <img src="{{ asset('img/Game21UML.png') }}" width="400px" alt="diagram">
+    </figure>
+
+    <p>This is a card game Twenty-one/Vingt-Un is the English version of Blackjack. Game Twenty-one/Vingt-Un(a game of unknown), is one of the most popular card games nowadays. While initially it was designed for two players, nowadays, you can enjoy it on your own. You can read more on the <a href="https://en.wikipedia.org/wiki/Twenty-One_(banking_game)">basics of the game on Wikipedia</a>.</p>
+
+    <p>These are the routes used in developing this exercise and game.</p>
+    
+    <div class="start">
+        <a href="{{ path("game21") }}" class="btn game-btn">Game21 rules</a>
+        <a href="{{ path("game21_documentation") }}" class="btn game-btn">Game21 documentation</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{# templates/project/gameover.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Poker{% endblock %}
+
+{% block content %}
+
+	<div class="dealer">
+		<p>Dealer Cards</p>
+	</div>
+
+
+	<div class="poker-table">
+
+		<div class="dealer-cards">
+			{% for card in dealer %}
+				<div class="outline shadow rounded" style="color:{{ card.color }}">
+					<div class="top">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+					<h1 style="color: {{ card.color }}">{{ card.suit | raw }}</h1>
+					<div class="bottom">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+
+				</div>
+			{% endfor %}
+		</div>
+		<div class="line-one">
+			<div>
+				<p>Total Pot:{{ pot }}</p>
+			</div>
+			<div class="community-cards">
+				{% for card in community %}
+					<div class="outline shadow rounded" style="color:{{ card.color }}">
+						<div class="top">
+							<span>{{ card.value }}</span>
+							<span>{{ card.suit | raw }}</span>
+						</div>
+						<h1 style="color: {{ card.color }}">{{ card.suit | raw }}</h1>
+						<div class="bottom">
+							<span>{{ card.value }}</span>
+							<span>{{ card.suit | raw }}</span>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<h3>{{ winner }}</h3>
+			<form method="post" action="{{ path('poker-newgame-process') }}">
+				<input type="submit" class="button small" name="exit" value="Exit">
+				<input type="submit" class="button small" name="continue" value="Continue">
+			</form>
+
+		</div>
+
+		<div class="your-cards">
+			{% for card in player %}
+				<div class="outline shadow rounded" style="color:{{ card.color }}">
+					<div class="top">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+					<h1 style="color: {{ card.color }}">{{ card.suit | raw }}</h1>
+					<div class="bottom">
+						<span>{{ card.value }}</span>
+						<span>{{ card.suit | raw }}</span>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="player-bet">
+		<p>User Cards</p>
+		<p>User Pot:
+			{{ playerbal }}
+			SEK
+		</p>
+	</div>
+{% endblock %}

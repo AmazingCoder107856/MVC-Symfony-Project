@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+<figure class="figure right">
+    <img src="{{ asset('img/umldiagram.jpg') }}" width="400px" alt="diagram">
+</figure>
+
+<p>This is just a shell of my card game simulator useable in the browser. I will try to develop this in the next kmom and choose one of the card games suggested by the professor.</p>
+
+<p>These are the routes used in developing this exercise and game.</p>
+<ul>
+    <li><a href="{{ path('card_deck') }}">Sorted Cards</a></li>
+    <li><a href="{{ path('card_deck_shuffle') }}">Shuffled Cards</a></li>
+    <li><a href="{{ path('card_deck_draw') }}">Draw a card</li>
+    <li><a href="{{ path('card_deck_draw_numbers', {num: 5}) }}">Draw some cards</li>
+    <li><a href="{{ path('card_play', {players: 0, cards: 1}) }}">Card Deal</li>
+</ul>
+
+{% endblock %}

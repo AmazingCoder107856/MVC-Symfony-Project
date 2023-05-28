@@ -1,0 +1,59 @@
+{# templates/project/doc.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Documentation{% endblock %}
+
+{% block content %}
+    <div class="about-wrapp">
+        <div class="texts">
+            <h2>Poker Documentation</h2>
+            <br>
+            <figure class="figure left">
+                <img class="flowchart" src="{{ asset("img/flowchart.jpg") }}" width="350px" height="400px" alt="flowchart">
+                <figcaption>Flow chart of Poker Game</figcaption>
+            </figure>
+        
+            <h4>Psudo Kod: </h4>
+            <p>Player is User</p>
+            <p>Dealer is Computer</p>
+            <p>Create Deck</p>
+            <p>Shuffle deck</p>
+            <p>Card game Poker starts</p>
+            <p>Player and dealer draw 1 cards each</p>
+
+            <p>if (sum of player cards is equal to 21)
+                if (sum of dealer cards is also equal to 21)
+                    Print out its a tie</p>
+
+            <p>while (sum of player cards is less than 21)
+                let player choose to draw another card or stay
+                if (player choose stay)
+                    jump out of while loop</p>
+
+            <p>while (sum of dealer cards is less than 17)
+                draw a new card for dealer.</p>
+
+            <p>if (sum of player cards is bigger than 21)
+                Print out dealer wins
+            else if (sum of dealer cards is bigger than 21)
+                print out you wins
+            else if (21 subtract to sum of dealer card is bigger than 21 subtract to sum of player card)
+                print out dealer wins
+            else if (21 subtract to sum of dealer card is less than 21 subtract to sum of player card)
+                print out you wins</p>
+
+            <h4>Classes: </h4>
+            <ul>
+                <li>Pokercards - class for creating a playcard</li>
+                <li>Pokerdeck - class for creating a deck of cards (with Cards object injected in Pokerdeck object)</li>
+                <li>Pokerhand - class that holds the cards player or dealer have in their hand</li>
+                <li>PokerplayerBal - class that holds both the player and the dealer rules for how winning or loosing</li>
+                <li>PokercompareHands - class that holds the cards player or dealer have in their hand</li>
+                <li>Pokergame - class that holds the game of Poker</li>
+                <li>Pokerrules - class that holds the rules of Poker</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

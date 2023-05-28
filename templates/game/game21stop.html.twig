@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game21{% endblock %}
+
+{% block body %}
+<div class="cards carder middle">
+    <br><br>
+    <h1>Game 21</h1>
+    
+    <h4>Dealer: {{ dealerscore }}</h4>
+    <br>
+    <div class="dealer-cards flex middle">
+        {% for card in dealer %}
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+    {% endfor %}
+    </div>
+    <br><br>
+    <h4>Player: {{ playerscore }}</h4>
+    <br>
+    <div class="your-cards flex middle">    
+        {% for card in player %}
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+    {% endfor %}
+    </div>
+    
+    <p>{{ gamestop }}</p>
+    <a href="{{ path("game21") }}" class="btn game-btn">New game</a>
+    
+    {{ include('flash.html.twig') }}
+</div>
+{% endblock %}

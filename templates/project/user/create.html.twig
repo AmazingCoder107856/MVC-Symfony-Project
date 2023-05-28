@@ -1,0 +1,58 @@
+{# templates/project/user/create.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+
+{% block title %}Create User{% endblock %}
+
+{% block content %}
+    <div class="avatar">
+        <br>
+        <img src="{{ asset('img/img_avatar2.png') }}" width="150px" alt="avatar bild">
+    </div>
+    <br>
+    <div class="registerforms">
+        <form method="POST">
+            <div class="register">
+                <div class="form-group row">
+                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="username" required class="form-control" id="username" placeholder="Enter username">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="firstname" class="col-sm-2 col-form-label">Firstname</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="firstname" required class="form-control" id="firstname" placeholder="Enter firstname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="lastname" required class="form-control" id="lastname" placeholder="Enter lastname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" required class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="image" class="col-sm-2 col-form-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="image" required class="form-control" id="image" placeholder="Image URL">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <center><button type="submit" class="btn btn-success">Add</button></center>
+                </div>
+            </div>
+        </form>
+
+        <form action={{ path('user') }}>
+            <center><button type="submit" class="btn btn-primary">Back</button></center>
+        </form>
+    </div>
+{% endblock %}

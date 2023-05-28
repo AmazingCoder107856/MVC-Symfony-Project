@@ -1,0 +1,527 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 100%;
+    line-height: 1.4;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+ol,
+ul {
+    padding-left: 1.5em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.4;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin: auto;
+    border-bottom: 5px solid #c4bfb8;
+    background-image: url("img/poker4.jpg");
+    background-color: #252525;
+}
+
+.proj-wrapper {
+    mIN-height: 100vh;
+    min-width: 100vw;
+    background-image: url("img/poker1.jpg");
+    background-color: #252525;
+    color: #ffff;
+
+}
+
+.proj-wrapper h2 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+.nav-proj {
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 3px 0 5px 5px #ffff;
+}
+
+.nav-proj a {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 28px;
+    color: #ffff;
+    font-weight: bold;
+}
+
+.nav-proj a:hover {
+    color: #0884a5;
+}
+
+.proj-title {
+    font-size: 30px;
+    position: relative;
+    color: #61c0da;
+    animation: title 5s linear infinite alternate;
+    height: 100px;
+}
+
+@keyframes title {
+    0% {
+        color: #61c0da;
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        color: rgb(223, 105, 255);
+        left: 20%;
+        top: 0px;
+    }
+
+    50% {
+        color: rgb(115, 105, 255);
+        left: 50%;
+        top: 50px;
+    }
+
+    75% {
+        color: rgb(105, 138, 255);
+        left: 20%;
+        top: 200px;
+    }
+
+    100% {
+        color: rgb(105, 220, 255);
+        left: 0px;
+        top: 0px;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.proj-wrapper form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-wrapp {
+
+    display: flex;
+}
+
+.texts {
+    width: 100%;
+    margin: 30px;
+    padding: 20px;
+
+}
+
+.dealer {
+    border: 3px solid #61c0da;
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.player-bet {
+    border: 3px solid rgb(105, 255, 240);
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: center;
+
+}
+
+.poker-table {
+    width: 80%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 50%;
+    border: 10px solid black;
+    margin: 0 auto;
+    padding: 30px;
+    background: linear-gradient(indigo, #9198e5);
+}
+
+.dealer-cards {
+    display: flex;
+}
+
+.your-cards {
+    display: flex;
+}
+
+.community-cards {
+    display: flex;
+}
+
+.outline {
+    width: 65px;
+    height: 90px;
+    text-align: center;
+    margin: 10px;
+    background: #FFF;
+}
+
+.cover {
+    background-color: #000;
+}
+
+.top {
+    text-align: left;
+}
+
+.bottom {
+    text-align: left;
+    transform: rotate(180deg);
+}
+
+.shadow {
+    box-shadow: 1px 1px 3px #000;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+}
+
+.rounded {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.poker-field {
+    border: 3px solid #61c0da;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #61c0da;
+    text-align: center;
+    justify-content: center;
+}
+
+.line-one {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small {
+    padding: 5px 15px;
+    margin: 10px;
+}
+
+.small:hover {
+    padding: 7px 17px;
+}
+
+.flexi {
+    display: flex;
+    justify-content: center;
+}
+
+.registerform {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+#registration_form_username {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#registration_form_firstname {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#registration_form_lastname {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#registration_form_plainPassword {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#registration_form_agreeTerms {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#inputUsername {
+    margin-bottom: 10px;
+}
+
+#inputPassword {
+    margin-bottom: 10px;
+}
+
+.flash {
+    background-color: #0884a5;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.profil {
+    width: 200px;
+    height: 300px;
+}
+
+.admin_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: 100px auto;
+}
+
+.admin_table td,
+.admin_table th {
+    border: 1px solid #252525;
+    padding: 8px;
+}
+
+.admin_table tr {
+    background-color: #f2f2f2;
+    color: #252525;
+}
+
+.admin_table tr:hover {
+    background-color: #ddd;
+}
+
+.admin_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #61c0da;
+    color: white;
+}
+
+.about-links {
+    color: #0884a5;
+    font-size: 20px;
+    margin: 20px auto;
+    border: #9198e5 dotted 3px;
+    padding: 40px;
+}
+
+.links {
+    color: #61c0da;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.links:hover {
+    color: #0884a5;
+}
+
+.clean-wrapp {
+    width: 70%;
+    margin: 20px auto;
+    background-color: rgb(191, 183, 183);
+    color: #252525;
+    padding: 30px;
+    border: 5px dotted #61c0da;
+}
+
+.about-wrapp2 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.footer {
+    margin: auto;
+    width: 100%;
+    border-radius: 6px;
+    background-image: url("img/poker5.jpg");
+    height: 100px;  
+    border-top: 5px solid #c4bfb8;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.social-icon {
+    margin: 20px 10px;
+    color: #fff;
+}
+
+#copy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.figure {
+    display: inline-block;
+    margin: 0;
+    padding: 0.5em;
+    border: .5px solid rgb(250, 247, 247);
+}
+
+.figure img {
+    max-width: 100%;
+    display: block;
+}
+
+.figure.right {
+    float: right;
+    margin-left: 1em;
+    background-color: rgb(159, 148, 161);
+}
+
+.figure.left {
+    float: left;
+    margin-right: 1em;
+    background-color: rgb(159, 148, 161);
+}
+
+.button {
+    border: 2px solid #caa838;
+    padding: 15px;
+    text-transform: Uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    background-color: #07544a;
+    transition: all 300ms ease-in;
+    color: #caa838;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #caa838;
+    color: #07544a;
+}
+
+.game-btn {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+}
+
+.create {
+    color: #ffff;
+    margin: 10px;
+}
+
+.table {
+    color: #ffff;
+}
+
+#save {
+    margin-right: -20px;
+    padding: -15px -20px;
+}
+
+#back {
+    margin-right: -20px;
+    padding: -15px -20px;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.registerforms {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#username {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#firstname {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#lastname {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#password {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#image {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#us {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#fs {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#ls {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#ps {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+#is {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}

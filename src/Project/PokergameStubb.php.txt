@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Project;
+
+/**
+ * A class for Pokergame.
+ */
+class PokerStubb
+{
+    /**
+   * @var string $player  The player.
+   * @var string $dealer  The dealer.
+   */
+    private $player;
+    private $dealer;
+
+
+    public function __construct()
+    {
+        $this->player = "Player";
+        $this->dealer = "Dealer";
+    }
+
+    public function firstPlay()
+    {
+        return "Empty";
+    }
+}
