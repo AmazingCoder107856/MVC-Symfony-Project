@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="open-book">
+        <div>
+            <h1>Om kursen</h1>
+            <p>Denna webbplatsen är en del av kursen <a href="https://dbwebb.se/kurser/mvc-v2">MVC</a>.</p>
+
+            <figure class="figure right">
+                <img src="{{ asset('img/mvc.jpg') }}" width="250px" alt="sqlite bild">
+            </figure>
+
+            <p>Kursen Objektorienterade webbteknologier, a.k.a. mvc, fokuserar på objektorienterade programmeringstekniker i programmeringsspråket PHP. Klassiska objektorienterade konstruktioner hanteras tillsammans med objektorienterad programmering i webbaserat ramverk tillsammans med databaser samt enhetstestning.</p>
+
+            <p>I denna kursen skall vi lära oss programmera webbapplikationer på ett objektorienterat sätt med fokus på det arkitekturella designmönstret MVC. För att komma igång behöver vi en bas och där har vi valt ramverket Symfony som är ett av de mer kända ramverken inom PHP.</p>
+
+            <p>Vi börjar med att installera Symfony och bygger en webbplats med en kontroller (C:et i MVC) som ger oss grunden för kursens me-sida som skall innehålla detaljer om dig själv, kursen och dina redovisningstexter. Du använder vyer för att rendera webbsidorna (V:et i MVC). Vi provar även att skapa en sida som genererats med JSON, det blir ett embryo till att se hur man kan bygga en webbtjänst med ett så kallat RESTful API.</p>
+        </div>
+        <div>
+            <h2><strong>Kursen omfattar följande områden:</strong></h2>
+                <ul>
+                    <li>Programmering i webbmiljö, syntax, semantik, koppling mot databaser, datastrukturer och inbyggda funktioner.</li>
+                    <li>Objektorienterad programmering i PHP med språkkonstruktioner och begrepp. Objektorientering som sätt att strukturera och återanvända kod. Enkla designmönster.</li>
+                    <li>SQL med en databas tillsammans med PHP Data Objects.</li>
+                    <li>Utveckling av webbapplikationer i ett ramverk där tekniker såsom webbserver (Apache), PHP, HTML, CSS, och SQL integreras tillsammans med ett webbaserat ramverk.</li>
+                    <li>Användning av verktyg och tekniker som lämpar sig för utveckling av webbapplikationer, tex UNIX/Linux, installation på extern webbserver, ssh, ftp/sftp, databasklienter såsom PHPMyAdmin, MySQL Workbench och kommandoklienter.</li>
+                </ul>
+            <br>
+            <p lang="sv">Kursen har ett <a href="https://github.com/dbwebb-se/mvc">Kursrepo på GitHub</a> med exempelprogram och issues där man kan ställa frågor och få utförliga svar.</p>
+        </div>
+    </div>
+{% endblock %}

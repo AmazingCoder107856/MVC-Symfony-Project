@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game21{% endblock %}
+
+{% block body %}
+
+    <h2>Game21 Documentation</h2>
+
+    <h4>Flow chart of Game21: </h4>
+        <img class="flowchart" src="{{ asset("img/flowchart.jpg") }}" alt="flowchart">
+    
+    <h4>Psudo Kod: </h4>
+    <p>Player is User</p>
+    <p>Dealer is Computer</p>
+    <p>Create Deck</p>
+    <p>Shuffle deck</p>
+    <p>Card game Game21 starts</p>
+    <p>Player and dealer draw 1 cards each</p>
+
+    <p>if (sum of player cards is equal to 21)
+        if (sum of dealer cards is also equal to 21)
+            Print out its a tie</p>
+
+    <p>while (sum of player cards is less then 21)
+        let player choose to draw another card or stay
+        if (player choose stay)
+            jump out of while loop</p>
+
+    <p>while (sum of dealer cards is less then 17)
+        draw a new card for dealer.</p>
+
+    <p>if (sum of player cards is bigger then 21)
+        Print out dealer wins
+    else if (sum of dealer cards is bigger then 21)
+        print out you wins
+    else if (21 subtract to sum of dealer card is bigger then 21 subtract to sum of player card)
+        print out dealer wins
+    else if (21 subtract to sum of dealer card is less then 21 subtract to sum of player card)
+        print out you wins</p>
+
+    <h4>Classes: </h4>
+    <ul>
+        <li>Cards - class for creating a playcard</li>
+        <li>CardDeck - class for creating a deck of cards (with Cards object injected in CardDeck object)</li>
+        <li>CardHand - class that holds the cards player or dealer have in their hand</li>
+        <li>Player - class that holds both the player and the dealer rules for how winning or loosing</li>
+        <li>Game21 - class that holds the game of Game21</li>
+    </ul>
+
+{% endblock %}

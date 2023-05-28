@@ -1,0 +1,30 @@
+{# templates/project/index.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="about-wrapp">
+        <div class="flash">
+		{# read and display all flash messages #}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	    </div>
+        <div class="texts">
+            <h2>Welcome to Poker Game!</h2>
+
+            <div class="flex">
+                <a href="{{ path("poker") }}" class="button game-btn">Poker rules</a>
+                <a href="{{ path("project_doc") }}" class="button game-btn">Poker documentation</a>
+                <a href="{{ path("user") }}" class="button game-btn">Admin</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

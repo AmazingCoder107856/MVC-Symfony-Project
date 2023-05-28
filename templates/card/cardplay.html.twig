@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Card game</h1>
+
+    {% if hands|length > 0 %}
+        <p>Remaining cards: {{ deck.countCards() }}</p>
+
+        <div class="card-wrapper-two">
+            {% for hand in hands %}
+                <h3 style="width: 100px;">Player {{loop.index}}</h3>
+                {% for card in cards %}
+                <div class="outline shadow rounded" style="color:{{card.color}}">
+                    <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+                    <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+                    <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% elseif deck.countCards() > 0 %}
+        <p>Remaining cards: {{ deck.countCards() }}</p>
+
+        <form>
+            <label class="card-game-label">Number of player(s)</label>
+            <input type="number" name="players" value="1" step="1" min="1">
+            <label class="card-game-label">Number of card(s)</label>
+            <input type="number" name="cards" value="1" step="1" min="1">
+            <input type="button" name="doit" value="Draw"
+                onClick="location.href='{{ path('card_play', {players: 0, cards: 0}) }}'.slice(0, -3) + this.form.elements.players.value + '/' + this.form.elements.cards.value;"
+            >
+        </form>
+    {% else %}
+        <p>Press <a href="{{ path('card_deck_shuffle') }}">shuffle</a> to start again.</p>
+    {% endif %}
+{% endblock %}

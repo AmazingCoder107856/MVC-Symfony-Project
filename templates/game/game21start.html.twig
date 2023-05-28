@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<div class="cards carder middle">
+    <br><br>
+    <h1>Game 21</h1>
+    
+    <h4>Dealer: {{ dealerscore }}</h4>
+    <br>
+    <div class="dealer-cards flex middle">
+        {% for card in dealer %}                
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+        {% endfor %}
+    </div>
+    <br><br>
+    <h4>Player: {{ playerscore }}</h4>
+    <br>
+    <div class="your-cards flex middle">    
+        {% for card in player %}
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+
+    {% if firstdraw %}
+        <p>{{ firstdraw }}</p>
+        <a href="{{ path("game21") }}" class="btn game-btn">New Game</a>
+    {% elseif playerscore > 21 %}
+        <p>You busted, Dealer won!</p>
+        <a href="{{ path("game21") }}" class="btn game-btn">New Game</a>
+    {% else %}
+        <br>
+        <form method="post" action="{{ path('game21_go') }}">
+            <input type="submit" name="hit" class="btn hit" value="Hit">
+            <input type="submit" name="stay" class="btn hit" value="Stay">
+        </form>
+    {% endif %}
+
+    {{ include('flash.html.twig') }}
+</div>
+{% endblock %}

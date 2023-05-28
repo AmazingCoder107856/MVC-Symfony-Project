@@ -1,0 +1,73 @@
+{# templates/project/about.html.twig #}
+
+{% extends "project/project.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+	<div class="about-wrapp">
+		<div class="texts">
+			<h2>
+				About
+			</h2>
+			<div>
+				<p>Det projekt jag valt att arbeta med är att skapa ett Texas Holdem. Det handlar om att en användare får två kort tilldelat och datorn får två, för användaren dolda kort. 
+																																																																																																																																																																					Sedan dras 3 kort i mitten och användaren kan välja att höja insatsen eller checka eller lägga sig. Detta mönster fortsätter tills 5 kort totalt är dragna i mitten. 
+																																																																																																																																																																					Då jämförs användarens kort med datorns kort och den med bäst "hand" vinner.
+					<br><br>Två saker skiljer sig från vanlig Texas. Det ena är att datorn bara följer vad användaren gör. 
+																																																																																																																																																																					Så om användaren checkar så checkar datorn och om användaren höjer så "callar datorn" samma belopp. Det andra är att om användaren och datorn har samma hand, så delas pengarna lika, oavsett om användaren par är bättre än datorns osv.
+				</p><br><br>
+				<p>Projektet går ut på att skapa texas holdem med hjälp av php, symfony och twig. 
+																																																																																																																																																																		Jag använder mig av klasser(Models), Views och Controller, MVC.
+																																																																																																																												Det finns också en databas där användarens uppgifter sparas med hjälp av ORM.</p><br><br>
+			</div>
+			<div>
+				<h2>KodKvalitet</h2>
+				<p>När det kommer till kodkvalitet har jag försökt attt ha så många verktyg och tester med mig längst hela kodandet.</p>
+				<p>Det har dock varit svårt och det är lätt att man fastnar i att bara koda och kanske inte alltid känner att man har tid att stanna upp och köra linters och automatiserade tester lite då och då.
+																																																																																															vilket jag nu i slutet kan se att jag hade säkert tjänat på att gjort. Men en sak som jag verkligen har fösök ha med mig när jag kodat är Cohesion. Jag har skapat många olika klasser som har smala områden av vad de gör.
+																																																																																															Hand klassen är verkligen bara en hand som har 2 metoder en set metod som ger spelarna en hand på 2 kort och en getter metod som visar spelarenskort.</p><br>
+				<p>Testningen har jag också lagt mycket tid på och den har faktiskt hjälpt mig att upptäcka vissa fel i Rules klassen bland annat.</p><br>
+				<p>En sak som jag tror hade hjälpt mig mycket är om jag gjort ett klass diagram för alla klasser innan. Och stolpat upp hur jag vill att mina Contollers ska se ut.</p>
+				<p>Verkligen en sak att ta med sig in i nästa projekt. Jag har inte jobbat alls så mycket med php metric och Scrutinizer. Något jag också kommer börja med mycket tidigare i projektet nästa gång</p>
+			</div>
+			<div>
+				<h2>Databasen</h2>
+				<img class="figure left" src="{{ asset("img/er.png") }}" width="200px" alt="er diagram">
+
+				<p>Min databas är skapade genom doctrine och ORM. Jag började med att skapa User som är en tabell som håller användarens uppgifter, lösenord och vilken summa som hen har lagt in i, "låtsaspengar".</p>
+				<p>Den andra tabellen är Outcome som håller resultatet från spelet, som antingen kan bli Win, Draw eller Lose.</p>
+				<p>Dessa två har en OneToMany relations där User är den ägande klassen. 1 User kan ha många Outcome men en Outcome tillhör bara 1 User.</p>
+				<p>Jag har skapat en join mellan dess tabeller genom att lägga till en findOneByIdJoinedToOutcome metod i UserRepository</p>
+			</div>
+
+			<ul>
+				<h2>
+					Links
+				</h2>
+				
+				<li>
+					<a class="links" href="https://www.student.bth.se/~glpa22/dbwebb-kurser/mvc_new/me/report/build/coverage/">Länk till code coverage som är genererad via phpUnitTest.</a>
+				</li>
+				<li>
+					<a class="links" href="https://www.student.bth.se/~glpa22/dbwebb-kurser/mvc_new/me/report/docs/api/">Länk till dokumentationen som är genererad via phpdoc.</a>
+				</li>
+				<li>
+					<a class="links" href="http://www.student.bth.se/~glpa22/dbwebb-kurser/mvc_new/me/report/docs/metrics/">Länk till rapporten från phpmetrics.</a>
+				</li>
+				<li>
+					<a class="links" href="https://github.com/AmazingCoder107856/MVC-Symfony-Project.git">Länk till ditt GitHub repo.</a>
+				</li>
+				<li>
+					<a class="links" href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main">Länk till Scrutinizer för ditt repo.</a>
+				</li>
+				<li>
+					<a class="links" href="{{ path("project_metrics") }}">Länk till artikel om Snygg Kod</a>
+				</li>
+			</ul>
+			
+		</div>
+	</div>
+
+{% endblock %}

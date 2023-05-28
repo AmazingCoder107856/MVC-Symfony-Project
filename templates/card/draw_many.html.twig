@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Draw Cards</h1>
+
+<p>Here are the value of the cards drawn.</p>
+
+<h3>Cards left: {{ num_cards }} cards</h3>
+<div class="card-wrapper-two">
+    {% for card in cards %}
+        <div class="outline shadow rounded" style="color:{{card.color}}">
+            <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+            <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+            <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+        </div>
+    {% endfor %}
+</div>
+
+<p>Try to draw 
+    <a href="{{ path('card_deck_draw_numbers', {num: 5}) }}">5</a>
+    or 
+    <a href="{{ path('card_deck_draw_numbers', {num: 20}) }}">20</a>
+    dices.
+</p>
+{% endblock %}

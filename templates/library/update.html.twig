@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    <form method="POST">
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" name="bookTitle" value="{{ library.getBookTitle() }}" required class="form-control" id="title" placeholder="Book title">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
+            <div class="col-sm-10">
+                <input type="text" name="bookIsbn" value="{{ library.getBookIsbn() }}" required class="form-control" id="isbn" placeholder="Book ISBN">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="author" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-10">
+                <input type="text" name="bookAuthor" value="{{ library.getBookAuthor() }}" required class="form-control" id="author" placeholder="Book author">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">Image link</label>
+            <div class="col-sm-10">
+                <input type="text" name="imageUrl" value="{{ library.getImageUrl() }}" class="form-control" id="image" placeholder="Image URL">
+            </div>
+        </div>
+        <br>
+        <center><button type="submit" name="doit" class="btn btn-success">Save</button></center>
+    </form>
+
+    <form action={{ path('library') }}>
+        <center><button type="submit" class="btn btn-primary">Back</button></center>
+    </form>
+{% endblock %}

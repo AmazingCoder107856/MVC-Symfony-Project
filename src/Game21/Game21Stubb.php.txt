@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Game21;
+
+/**
+ * A class for game 21.
+ */
+class Game21Stubb
+{
+    /**
+   * @var string $player  The player.
+   * @var string $dealer  The dealer.
+   */
+    private $player;
+    private $dealer;
+
+
+    public function __construct()
+    {
+        $this->player = "Player";
+        $this->dealer = "Dealer";
+    }
+
+    public function firstPlay()
+    {
+        return "Empty";
+    }
+}

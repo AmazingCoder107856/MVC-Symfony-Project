@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Shuffled Cards</h1>
+
+    <p>Here are the 52 shuffled cards.</p>
+</div>
+<div class="card-wrapper">
+{% for card in cards %}
+    <div class="outline shadow rounded" style="color:{{card.color}}">
+        <div class="top"><span>{{card.value}}</span><span>{{card.suit | raw}}</span></div>
+        <h1 style="color: {{card.color}}">{{card.suit | raw}}</h1>
+        <div class="bottom"><span>{{card.value}}</span><span >{{card.suit | raw}}</span></div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

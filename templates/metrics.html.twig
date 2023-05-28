@@ -1,0 +1,126 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+<h1>Kodkvalitet</h1>
+
+<h2>Introduktion</h2>
+
+<p>I denna rapport ska jag analysera utifrån de sex C:na (codestyle, coverage, complexity, cohesion, coupling och CRAP). De 6 C:na visar in vissa mönster som kan förekomma i kod och de är bra verktyg för att förstå mina koder samt hjälper till att förbättra koden.</p>
+
+<p><i>Codestyle</i> används för att skriva koden enligt en bra kodstil. I detta arbete så används composer phpcsfix för att kontrollera samt fixa kodstilen. Det är vanligt att projekt har såna här stilregler men de stilreglerna behöver inte vara samma för alla projekt ens med samma programmeringsspråk.</p>
+
+<p><i>Coverage</i> används för att beskriva hur stor hög täckning man har för sina tester på sin kod. Det säger ingenting om testernas kvalité eller innehåll, enbart hur mycket som testas. Det vill säga att 70% och mer är hjälpligt, 90% eller mer är bra. I detta projekt har jag landat mella 70%-100%, då är jag nöjd med resultatet.</p>
+
+<p><i>Complexity</i> handlar om ett projekts komplexitet, att man inte kan undvika att ha för komplex kod. Det finns inget enskild mätvärde för detta, men oftast används cyklomatisk complexitet. Cyklomatisk complexitet bedömer enskilda metoders olika beslutsvägar, så om en metod har många möjliga beslutsvägar ökar Cyklomatisk complexitet. Hög Cyklomatisk complexitet betyder att metoden blir svårare att förstå samt svårare att testa.</p>
+
+<p><i>Cohesion</i> handlar om sammanhållning, hur ens kod ska hänga samman i syfte och funktion och att alla metoder i samma klass ska uppnå samma mål. Ett högt LCOM betyder stor brist på cohesion och är inte önskvärt. I detta projekt har jag hög LCOM på App\Controller\JsonCardGameController med ett värde på 5. Game21 är byggt med mer än två olika klasser som ger ett värde på 5.</p>
+
+<p><i>Coupling</i> handlar om hur sammankopplade delar av koden är. Vi vill ha kod med låg coupling, det vill säga som gör sin egen sak utan att använda sig eller bli använd av andra delar av koden för mycket. Coupling skapar beroenden som gör det svårare att underhålla och arbeta med koden. Man kan mäta coupling med Efferent Coupling och Afferent Coupling. Afferent Coupling anger hur många andra klasser som använder klassen och Efferent Coupling anger hur många andra klasser som klassen använder. I detta projekt har klasserna mellan 0 och 4 i Afferent Coupling och mellan 0 och 7 Efferent Coupling.</p>
+
+<p><i>CRAP</i> betyder change risk anti-pattern eller change risk analyzer and predictor. Det är ett mätvärde som jämför en metods komplexitet med hur mycket tester som utförs på metoden. Idéen är att om du har högt CRAP på en metod så kan det behövas mer tester för att minska risken av buggar i koden. I detta projekt har 0.11 genomsnittliga buggar per klass.</p>
+
+<h2>Phpmetrics</h2>
+
+<p>Att använda PhpMetrics för att analysera min projekt är ett bra verktyg att kunna se svårigheter och vad ska jag förbättra.</p>
+
+<figure class="figure left">
+    <img src="{{ asset('img/PhpMetrics.png') }}" width="350px" alt="maintainability">
+    <figcaption>Phpmetrics maintainability och complexity.</figcaption>
+</figure>
+
+<p>Enligt PhpMetrics får App/Controller/Json/CardGame/Controller lägst i Maintainablity Index av all controller med 54,55 Maintainablity Index.</p>
+<br>
+<figure class="figure right">
+    <img src="{{ asset('img/coupling.jpg') }}" width="350px" alt="coupling.">
+    <figcaption>Hög Afferent Coupling och Efferent Coupling.</figcaption>
+</figure>
+
+<p>Klassen CardHand har hög coupling, framförallt så har den hög Afferent Coupling. Det är många andra klassen som använder CardHand.</p>
+<br>
+<figure class="figure right">
+    <img src="{{ asset('img/complexity1.jpg') }}" width="350px" alt="complexity.">
+    <figcaption>Genomsnittliga CC per klass.</figcaption>
+</figure>
+
+<p>Enligt PhpMetrics får klassen Game21 högsta CC (13), vilket är betyder hur svårt en klass är att underhålla.</p>
+<br>
+<figure class="figure right">
+    <img src="{{ asset('img/complexity.jpg') }}" width="350px" alt="complexity.">
+    <figcaption>Hög LCOM i klassen/Controller.</figcaption>
+</figure>
+
+<p>Enligt PhpMetrics har Api/Game21 stor brist på cohesion, den försöker göra mycket. En annan del av phpmetrics varnar för att den är en god class, vilket är tätt sammakopplat med låg cohesion.</p>
+
+<br><br>
+<h2>Scrutinizer</h2>
+
+<p>I Scrutinizers analys har jag fått ett bra betyg i detta projekt, trots det går det att hitta vissa svagheter.</p>
+
+<figure class="figure left">
+    <img src="{{ asset('img/scrutinizerrating.jpg') }}" width="350px" alt="rating.">
+    <figcaption>
+        <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"></a>
+    </figcaption>
+</figure>
+
+<p>Jag fick "coverage unknown not enabled" i Scrutinizer även jag har följt allting som uppgiftens instruktioner och det är så tråkigt. Men man kan se result genom att gå in på build/clover.coverage.</p>
+
+<p>Scrutinizer varnar för att denna metoden har hög cyklomatiskt komplexitet. Här kan man kolla på testtäckning i koden. Även fast det är bra att ha 9.92 av 10, så finns fortfarande mycket möjligheter att förbättra min kod.</p>
+
+<h2>Förbättringar</h2>
+
+<p>Att nå högt kodkvalite samt clean code kommer jag att fokusera på att förbättra projeketets coverage, metoderna i CardHand och rensa upp alla buggar.</p>
+
+<h3>Code coverage på Game 21</h3>
+
+<p>Denna metoden har som sagt hög complexitet. Det är att försäkra om att alla beslutspunkter ger rätt utslag</p>
+
+<h3>Komplexiteten i klassen CardHand</h3>
+
+<p>Denna klassen har hög CC på grund av att jag har inte använt nånting interface. Då blir det svårare att koppla handen till andra klasser.</p>
+
+<h3>Buggar i klasser</h3>
+
+<p> mitt huvudsyfte att få en mer clean code och att den ska vara mer lätt läslig.</p>
+
+<h3>Issues i Scrutinizer</h3>
+
+<p>Jag har svårt att få in coverage betyg på mitt projekt. Jag har googlat och har läst Scrutinizers dokumentationen men fortfarande lyckades inte till nu. Till slut ger jag upp att testa via Scrutinizer. Jag ska försöka på nästa projekt.</p>
+
+<h3>Åtgärder</h3>
+
+<p>Det jag gick till var i alla fall högre kodtäckning på Game21 test klassen, med hjälp av mockning och stub. Vilket har gett mig bättre förståelse för det.</p>
+
+<p>Nedan är också scrutinizer-badges före och efter.</p>
+
+<figure class="figure left">
+    <img src="{{ asset('img/scrutinizer2.jpg') }}" width="600px" alt="Scrutinizer Code">
+
+    <figcaption>Scrutinizer badges före åtgärder</figcaption>
+
+</figure>
+
+<p>Nedan är också scrutinizer-badges efter åtgärder.</p>
+
+<figure class="figure left">
+    <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/quality-score.png?b=main" alt="Code Quality"></a>
+
+    <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/coverage.png?b=main" alt="Code Coverage"></a>
+
+    <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/build.png?b=main" alt="Build Status"></a>
+
+    <a href="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/?branch=main"><img src="https://scrutinizer-ci.com/g/AmazingCoder107856/MVC-Symfony-Project/badges/code-intelligence.svg?b=main" alt="Code Intelligence"></a>
+
+    <figcaption>Scrutinizer badges efter åtgärder</figcaption>
+</figure>
+<br><br><br><br><br>
+
+<h2>Diskussion</h2>
+
+<p>Jag tycker absolut att man kan jobba aktivt med kodkvalitet på detta vis. Ett ännu smartare sätt tro jag är att sätta sig in i dokumentationen för vad som är bra kodkvalitet innan man börjar ett projekt. Då kan man alltid ha det i åtanke samtidigt som man skriver koden. Och under projektets gång testa. Jag tror inte riktigt på att avsluta ett projekt med att köra automatiserade tester. Det ger nog bara utvecklaren dåliga tankar och svårt att som sagt hoppa in i helt färdigskriven kod och börja ändra.</p>
+
+<p>Dessa verktyg är faktiskt användbara under kod utvecklingens gång. Speciellt Code Covergae, men det är också mer komplext än att bara titta på en siffra. Jag har sett några som skrivit tester med 100 % kod täckning men där testerna egentligen inte testar annat än om det man retunerar är en inte eller sträng. </p>
+
+{% endblock %}
