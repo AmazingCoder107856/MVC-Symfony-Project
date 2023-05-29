@@ -34,3 +34,25 @@ To set this game in to action I worked with MVC (models, views and controllers),
 I've used the symfonys log in system make:user and make:auth. Ive been working with sessions to hold the game through every get and post request. And to store the users data I've worked with doctrine and ORM.
 
 There is also phpunit test on all my own created classes, along with other automatized tests such as metrics and scrutinizer.
+
+MVC objectoriented php course final project
+
+I created a Poker game, where the user has to log in to be able to play.
+
+The user play against the computer(dealer) and the one with the best hand winns the total pot of "money".
+
+To set this game in to action I worked with MVC (models, views and controllers), through the Symfony and twig framwork, with the PHP language.
+
+I've used the symfonys log in system make:user and make:auth. Ive been working with sessions to hold the game through every get and post request. And to store the users data I've worked with doctrine and ORM.
+
+There is also phpunit test on all my own created classes, along with other automatized tests such as metrics and scrutinizer.
+
+För att bygga appen på din enhet kan du följa dessa steg.
+
+<a href="git clone git@github.com:AmazingCoder107856/MVC-Symfony-Project.git"></a>
+cd MVC-Symfony-Project/
+composer install
+php bin/console doctrine:migration:migrate
+npm install
+npm run build
+
