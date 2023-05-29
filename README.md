@@ -49,10 +49,10 @@ There is also phpunit test on all my own created classes, along with other autom
 
 För att bygga appen på din enhet kan du följa dessa steg.
 
-<a href="git clone git@github.com:AmazingCoder107856/MVC-Symfony-Project.git"></a>
-cd MVC-Symfony-Project/
-composer install
-php bin/console doctrine:migration:migrate
-npm install
-npm run build
+git clone git@github.com:AmazingCoder107856/MVC-Symfony-Project.git <br>
+cd MVC-Symfony-Project/ <br>
+composer install <br>
+php bin/console doctrine:migration:migrate <br>
+npm install <br>
+npm run build <br>
 
