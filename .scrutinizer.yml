@@ -31,4 +31,4 @@ build:
                     file: "build/coverage.clover"
                     format: "php-clover"
 tools:
-    php_code_coverage: true
+    php_code_coverage: false
