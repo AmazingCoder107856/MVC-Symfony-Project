@@ -23,17 +23,14 @@ Get going with Symfony. Install Symfony via https://github.com/dbwebb-se/mvc/tre
 Get going with phpunit
 This is short tutorial with code samples on how to get going with phpunit for unit testing and code coverage.
 
-A walkthrough
-Prerequisite
-Get going
-The game source code
-Directory structure
-Executing the test cases
-Review the code coverage
-Get good code coverage
-Review a test case
-More on testing
-Summary
-Excercise
-Thoughts
-References
+MVC objectoriented php course final project
+
+I created a Poker game, where the user has to log in to be able to play.
+
+The user play against the computer(dealer) and the one with the best hand winns the total pot of "money".
+
+To set this game in to action I worked with MVC (models, views and controllers), through the Symfony and twig framwork, with the PHP language.
+
+I've used the symfonys log in system make:user and make:auth. Ive been working with sessions to hold the game through every get and post request. And to store the users data I've worked with doctrine and ORM.
+
+There is also phpunit test on all my own created classes, along with other automatized tests such as metrics and scrutinizer.
